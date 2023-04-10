@@ -6,7 +6,7 @@ error_reporting(0);
 
 $aRollno=$_SESSION["aRollno"];
 
-$_SESSION["aRollno"] = $aRollno;
+$_SESSION["aRollnonew"] = $aRollno;
 
 $aEmail=$_SESSION["aEmail"];
 
