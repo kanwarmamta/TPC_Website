@@ -8,7 +8,8 @@
         <form action="company.php" method="get">
             Company ID: <input type="text" name="comId" maxlength="6"/><br>
             Password: <input type="password" name="password" maxlength="20"/><br>
-            <input type="submit" name="login" value="Login"/>
+            <input type="submit" name="login" value="Login"/><br>
+            <p>Not a member? <a href="com_register.php">Register</a></p>
         </form>
     </body>
 </html>
@@ -55,7 +56,7 @@ if ($result)
                             $_SESSION["comPhone"] = $comPhone;
                             $_SESSION["loggedin"] = true;
                             //Redirect user to welcome page
-                            header("location: comUpdate.php");
+                            header("location: com_view.php");
                         }
                         else
                         {
