@@ -20,9 +20,9 @@
             First Company Location: <input type="text" name="aLocP" maxlength="100"/><br>  
             First Company Tenure: <input type="text" name="aTenureP"/><br>  
             Current Company : <input type="text" name="aCompC" maxlength="50"/><br>
-            current CTC: <input type="number" name="aCtcC"/><br>
+            Current CTC: <input type="number" name="aCtcC"/><br>
             Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
-            current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
+            Current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
             Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
             Current Company  Tenure: <input type="text" name="aTenureC"/><br>  
             <input type="submit" name="submit" value="Update" />
