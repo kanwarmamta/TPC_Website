@@ -18,13 +18,13 @@
             Area of interest: <input type="text" name="aAreaIntP" maxlength="100"/><br>
             First Company Role: <input type="text" name="aRoleP" maxlength="100"/><br>
             First Company Location: <input type="text" name="aLocP" maxlength="100"/><br>  
-            First Company Tenure: <input type="text" name="aTenureP"/><br>  
+            First Company Tenure: <input type="number" name="aTenureP"/><br>  
             Current Company : <input type="text" name="aCompC" maxlength="50"/><br>
-            Current CTC: <input type="number" name="aCtcC"/><br>
+            current CTC: <input type="number" name="aCtcC"/><br>
             Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
-            Current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
+            current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
             Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
-            Current Company  Tenure: <input type="text" name="aTenureC"/><br>  
+            Current Company  Tenure: <input type="number" name="aTenureC"/><br>  
             <input type="submit" name="submit" value="Update" />
         </form>
     </body>
@@ -92,3 +92,17 @@ if(isset($_GET["submit"]))
     exit;
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
