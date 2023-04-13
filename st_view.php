@@ -23,7 +23,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
     <body>
         <h2>Welcome, <?php echo $_SESSION["stName"]?>! </h2>
         <hr>
-        <input type="button" value="Update Info" class="homebutton" id="u" onClick="document.location.href='st_update.php'" />
+        <input type="button" value="Edit Profile" class="homebutton" id="u" onClick="document.location.href='st_update.php'" />
         <input type="button" value="Delete user" class="homebutton" id="d" onClick="document.location.href='st_delete.php'" />
         <input type="button" value="Logout" class="homebutton" id="l" onClick="document.location.href='st_logout.php'" />
     </body>
