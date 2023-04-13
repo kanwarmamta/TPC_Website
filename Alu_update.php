@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Update Info</title>
+        <title>Edit Information</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <h1>Update Information</h1>                
+        <h1>Edit Profile</h1>                
         <form action="Alu_update.php" method="get">
             Roll no : <input type="text" name="aRollno" maxlength="8"/><br>
             Name: <input type="text" name="aName" maxlength="50"/><br>
@@ -20,7 +20,7 @@
             First Company Location: <input type="text" name="aLocP" maxlength="100"/><br>  
             First Company Tenure: <input type="number" name="aTenureP"/><br>  
             Current Company : <input type="text" name="aCompC" maxlength="50"/><br>
-            current CTC: <input type="number" name="aCtcC"/><br>
+            Current CTC: <input type="number" name="aCtcC"/><br>
             Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
             current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
             Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
