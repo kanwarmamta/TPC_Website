@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Update Info</title>
+        <title>Edit Information</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <h1>Update Information</h1>                
+        <h1>Edit Profile</h1>                
         <form action="st_update.php" method="get">
             Roll No: <input type="text" name="stRollno" maxlength="8"/><br>
             Name: <input type="text" name="stName" maxlength="50"/><br>
