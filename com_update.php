@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Update Info</title>
+        <title>Edit Info</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <h1>Update Information</h1>                
+        <h1>Edit Information</h1>                
         <form action="com_update.php" method="get">
             Company ID: <input type="text" name="comId" maxlength="6"/><br>
             Company Name: <input type="text" name="comName" maxlength="50"/><br>
@@ -18,7 +18,9 @@
                     document.querySelector("input[type=number]")
                     .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
                 </script><br>
-            Marks Criteria: <input type="number" step="0.01" name="markcri" maxlength="5"/><br>
+            Standard 10th Marks Criteria: <input type="number" step="0.01" name="10thCri" maxlength="5"/><br>
+            Standard 12th Marks Criteria: <input type="number" step="0.01" name="12thCri" maxlength="5"/><br>
+            CPI Criteria: <input type="number" step="0.01" name="cpiCri" maxlength="5"/><br>
             Salary Package: <input type="number" name="salpack"/><br>
             Mode of Interview [Online/Offline]: <input type="text" name="mode" maxlength="7"/><br>
             Mode of Interview [Written/Interview]: <input type="text" name="mode1" maxlength="9"/><br>
@@ -67,7 +69,9 @@ if(isset($_GET["submit"]))
     $comPwd=$_GET["comPassword"];
     $reqCandi=$_GET["reqCandi"];
     $minQual=$_GET["minQual"];
-    $markcri=$_GET["markcri"];
+    $Cri10=$_GET["10thCri"];
+    $Cri12=$_GET["12thCri"];
+    $cpiCri=$_GET["cpiCri"];
     $salpack=$_GET["salpack"];
     $mode=$_GET["mode"];
     $mode1=$_GET["mode1"];
@@ -80,9 +84,9 @@ if(isset($_GET["submit"]))
     }
     
     // Update the user's information in the "users" table
-    $sql = "UPDATE company SET comId=?, comName=?, comEmail=?, comPhone=?, comPassword=?, reqCandi=?, minQual=?, markcri=?, salpack=?, mode=?, mode1=?, yearrec=? WHERE comId=?";
+    $sql = "UPDATE company SET comId=?, comName=?, comEmail=?, comPhone=?, comPassword=?, reqCandi=?, minQual=?, 10thCri=?, 12thCri=?, cpiCri=?, salpack=?, mode=?, mode1=?, yearrec=? WHERE comId=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssssssss", $comId, $comName, $comEmail, $comPhone, $comPwd, $reqCandi, $minQual, $markcri, $salpack, $mode, $mode1, $yearrec, $currcomId);
+    $stmt->bind_param("sssssssssssssss", $comId, $comName, $comEmail, $comPhone, $comPwd, $reqCandi, $minQual, $Cri10, $Cri12, $cpiCri, $salpack, $mode, $mode1, $yearrec, $currcomId);
     $stmt->execute();
     echo "Successfully Updated.";
     exit;
