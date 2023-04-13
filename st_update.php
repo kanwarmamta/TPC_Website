@@ -22,19 +22,7 @@
             Placed: <input type="text" name="stPlaced"/><br>
             Package recieved: <input type="number" name="stPack"/><br>
 
-                <!-- <script>
-                    document.querySelector("input[type=number]")
-                    .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
-                </script><br>
-            Marks Criteria: <input type="number" step="0.01" name="markcri" maxlength="5"/><br>
-            Salary Package: <input type="number" name="stAge"/><br>
-            stSpec of Interview [Online/Offline]: <input type="text" name="stSpec" maxlength="7"/><br>
-            stSpec of Interview [Written/Interview]: <input type="text" name="stInterest" maxlength="9"/><br>
-            Year since recruiting from IIT Patna: <input type="number" name="stBatch" placeholder="YYYY" min="2008" max="2023"> -->
-                <!-- <script> -->
-                    <!-- document.querySelector("input[type=number]")
-                    .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
-                </script><br> -->
+               
             <input type="submit" name="submit" value="Update" />
         </form>
     </body>
