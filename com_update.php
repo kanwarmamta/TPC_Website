@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Edit Info</title>
+        <title>Edit Information</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <h1>Edit Information</h1>                
+        <h1>Edit Profile</h1>                
         <form action="com_update.php" method="get">
             Company ID: <input type="text" name="comId" maxlength="6"/><br>
             Company Name: <input type="text" name="comName" maxlength="50"/><br>
