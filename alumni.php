@@ -2,7 +2,7 @@
 
     <head lang="en">
 
-        <title>Alumnus Login</title>
+        <title>Alumni Login</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
