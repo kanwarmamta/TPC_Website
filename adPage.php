@@ -6,6 +6,8 @@
 		<input type="submit" name="show_data" value="Show Alumni Table">
         <input type="submit" name="show_comdata" value="Show Company Table">
         <input type="submit" name="show_stdata" value="Show Student Table">
+        <input type="submit" name="show_applydata" value="Applied Student Status ">
+        <input type="submit" name="show_selectdata" value="Selected Student Data">
 	</form>
   <style>
     table {
@@ -113,6 +115,54 @@ if(isset($_POST['show_stdata'])) {
     } else {
       echo "0 results";
     }
+
+    mysqli_close($conn);
+}
+if(isset($_POST['show_applydata'])) {
+    require_once 'dbconfig.php';
+
+    $sql = "SELECT s.stRollno,s.stName,s.stBatch,c.comName, a.status  FROM student as s inner join applied as a on a.stRollno=s.stRollno  inner join company as c on c.comId=a.comId";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die('Error executing query: ' . mysqli_error($conn));
+      }
+    if (mysqli_num_rows($result) > 0) {
+      echo "<table><tr><th>Roll Number</th><th>Student Name</th><th>Student Batch</th><th>Company Name</th><th>Status</th></tr>";
+      while($row = mysqli_fetch_assoc($result)) {
+        echo "<tr><td>" . $row["stRollno"]. "</td><td>" . $row["stName"]. "</td><td>" . $row["stBatch"]. "</td><td>" . $row["comName"]. "</td><td>" . $row["status"]. "</td></tr>";
+      }
+      echo "</table>";
+    } else {
+      echo "0 results";
+    }
+    $result = mysqli_query($conn, $sql);
+// if (!$result) {
+//   die('Error executing query: ' . mysqli_error($conn));
+// }
+
+    mysqli_close($conn);
+}
+if(isset($_POST['show_selectdata'])) {
+    require_once 'dbconfig.php';
+
+    $sql = "SELECT s.stRollno,s.stName,s.stBatch,c.comName,c.salpack FROM student as s inner join applied as a on a.stRollno=s.stRollno  inner join company as c on c.comId=a.comId and a.status='selected'";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die('Error executing query: ' . mysqli_error($conn));
+      }
+    if (mysqli_num_rows($result) > 0) {
+      echo "<table><tr><th>Roll Number</th><th>Student Name</th><th>Student Batch</th><th>Company Name</th><th>CTC Offered</th></tr>";
+      while($row = mysqli_fetch_assoc($result)) {
+        echo "<tr><td>" . $row["stRollno"]. "</td><td>" . $row["stName"]. "</td><td>" . $row["stBatch"]. "</td><td>" . $row["comName"]. "</td><td>" . $row["salpack"]. "</td></tr>";
+      }
+      echo "</table>";
+    } else {
+      echo "0 results";
+    }
+    $result = mysqli_query($conn, $sql);
+// if (!$result) {
+//   die('Error executing query: ' . mysqli_error($conn));
+// }
 
     mysqli_close($conn);
 }
