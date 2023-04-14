@@ -51,9 +51,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
         <input type="button" value="Edit Profile" class="homebutton" id="u" onClick="document.location.href='Alu_update.php'" />
         <input type="button" value="Delete user" class="homebutton" id="d" onClick="document.location.href='Alu_delete.php'" />
 
-      <input type="button" value="Logout" class="homebutton" id="l" onClick="document.location.href='Alu_logout.php'" />
+<input type="button" value="Logout" class="homebutton" id="l" onClick="document.location.href='Alu_logout.php'" />
 
 </body>
 
 </html>
-
