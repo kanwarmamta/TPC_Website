@@ -52,6 +52,7 @@ session_start();
 // check if user is logged in
 if(!isset($_SESSION["stRollno"])) {
   echo "You need to log in to see this page.";
+  header('Location: student.php');
   exit();
 }
 require_once 'dbconfig.php';
@@ -62,7 +63,7 @@ if (!$conn) {
 
 // retrieve data from student_company table for the logged-in student
 $stRollno = $_SESSION["stRollno"];
-$sql = "SELECT comId, comName FROM student_company WHERE stRollno = '$stRollno'";
+$sql = "SELECT c.comId, c.comName FROM student s INNER JOIN company c ON s.stBatch = c.minQual WHERE s.st10thPer >= c.10thCri AND s.st12thPer >= c.12thCri AND s.stcurrCpi >= c.cpiCri AND s.stPack < c.salpack AND s.stRollno = '$stRollno'"; 
 $result = mysqli_query($conn, $sql);
 
 if ($result === false) {
@@ -70,11 +71,34 @@ if ($result === false) {
   echo "Error executing query: " . mysqli_error($conn);
 } else if (mysqli_num_rows($result) > 0) {
   // display table headers
-  echo "<table><tr><th>Company ID</th><th>Company Name</th></tr>";
+  echo "<table><tr><th>Company ID</th><th>Company Name</th><th>Apply</th></tr>";
 
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
-    echo "<tr><td>" . $row["comId"]. "</td><td>" . $row["comName"]. "</td></tr>";
+    $comId = $row["comId"];
+    echo "<tr><td>" . $row["comId"]. "</td><td>" . $row["comName"]. "</td>";
+    
+    // check if the student has already applied to this company
+    $checkSql = "SELECT * FROM applied WHERE stRollno = '$stRollno' AND comId = '$comId'";
+    $checkResult = mysqli_query($conn, $checkSql);
+    if (mysqli_num_rows($checkResult) > 0) {
+      // student has already applied to this company
+      echo "<td>Applied</td>";
+    } else {
+      // display "Apply" button and update applied table when clicked
+      echo "<td><button onclick=\"location.href='?comId=$comId'\">Apply</button></td>";
+      if (isset($_GET["comId"]) && $_GET["comId"] == $comId) {
+        $applySql = "INSERT INTO applied (stRollno, comId) VALUES ('$stRollno', '$comId')";
+        $applyResult = mysqli_query($conn, $applySql);
+        if ($applyResult) {
+          echo "<script>alert('Application submitted successfully.');</script>";
+          echo "<meta http-equiv='refresh' content='0'>";
+        } else {
+          echo "Error submitting application: " . mysqli_error($conn);
+        }
+      }
+    }
+    echo "</tr>";
   }
 
   // close table tag
