@@ -92,17 +92,3 @@ if(isset($_GET["submit"]))
     exit;
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
