@@ -17,7 +17,7 @@
             Current CPI: <input type="number" step="0.01" name="stcurrCpi" maxlength="5"/><br>
             Age: <input type="number" name="stAge"/><br>
             Specialisation: <input type="text" name="stSpec"/><br>
-            Interest: <input type="text" name="stInterset"/><br>
+            Interest: <input type="text" name="stInterest"/><br>
             Batch: <input type="number" name="stBatch"/><br>
             Placed: <input type="text" name="stPlaced"/><br>
             Package recieved: <input type="number" name="stPack"/><br>
@@ -66,7 +66,7 @@ if(isset($_GET["submit"]))
     $stcurrCpi=$_GET["stcurrCpi"];
     $stAge=$_GET["stAge"];
     $stSpec=$_GET["stSpec"];
-    $stInterset=$_GET["stInterset"];
+    $stInterest=$_GET["stInterest"];
     $stBatch=$_GET["stBatch"];
     $stPlaced=$_GET["stPlaced"];
     $stPack=$_GET["stPack"];
@@ -78,10 +78,11 @@ if(isset($_GET["submit"]))
     }
     
     // Update the user's information in the "users" table
-    $sql = "UPDATE student SET stRollno=?, stName=?, stWebmail=?, stPhone=?, stPassword=?, st10thPer=?, st12thPer=?, stcurrCpi=?, stAge=?, stSpec=?, stInterset=?, stBatch=?, stPlaced=?, stPack=? WHERE stRollno=?";
+    $sql = "UPDATE student SET stRollno=?, stName=?, stWebmail=?, stPhone=?, stPassword=?, st10thPer=?, st12thPer=?, stcurrCpi=?, stAge=?, stSpec=?, stInterest=?, stBatch=?, stPlaced=?, stPack=? WHERE stRollno=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssdddissisds", $stRollno, $stName, $stWebmail, $stPhone, $stPwd, $st10thPer, $st12thPer, $stcurrCpi, $stAge, $stSpec, $stInterset, $stBatch, $stPlaced, $stPack, $currstRollno);
+    $stmt->bind_param("sssssdddissisds", $stRollno, $stName, $stWebmail, $stPhone, $stPwd, $st10thPer, $st12thPer, $stcurrCpi, $stAge, $stSpec, $stInterest, $stBatch, $stPlaced, $stPack, $currstRollno);
     $stmt->execute();
+    echo "Successfully Updated.";
     
     exit;
 }
