@@ -13,6 +13,11 @@
             Phone Number: <input type="text" name="aPhone" maxlength="10"/><br>
             Password: <input type="password" name="aPassword" maxlength="20"/><br>
             CPI: <input type="number" step="0.01" name="aCpi" maxlength="5"/><br>
+            Batch: <input type="number" name="aBatch" placeholder="YYYY" min="2008" max="2022">
+                <script>
+                    document.querySelector("input[type=number]")
+                    .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
+                </script><br>
             First Company Joined: <input type="text" name="aCompP" maxlength="50"/><br>
             First CTC: <input type="number" name="aCtcP"/><br>
             Area of interest: <input type="text" name="aAreaIntP" maxlength="100"/><br>
@@ -24,7 +29,12 @@
             Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
             Current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
             Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
-            Current Company  Tenure: <input type="number" name="aTenureC"/><br>  
+            Current Company  Tenure: <input type="number" name="aTenureC"/><br>
+
+            <div class="checkbox">
+				    <label><input type="checkbox" name="decl" value="accepted">I declare that the information given by me is true to my knowledge.</label>
+			    </div>
+
             <input type="submit" name="submit" value="Update" />
         </form>
     </body>
@@ -64,6 +74,7 @@ if(isset($_GET["submit"]))
     $aPhone=$_GET["aPhone"];
     $aPwd=$_GET["aPassword"];
     $aCpi=$_GET["aCpi"];
+    $aBatch=$_GET["aBatch"];
     $aCompP=$_GET["aCompP"];
     $aCtcP=$_GET["aCtcP"];
     $aAreaIntP=$_GET["aAreaIntP"];
@@ -83,12 +94,19 @@ if(isset($_GET["submit"]))
         exit;
     }
     
-    // Update the user's information in the "users" table
-    $sql = "UPDATE alumni SET aRollno=?, aName=?, aEmail=?, aPhone=?, aPassword=?, aCpi=?, aCompP=?, aCtcP=?, aAreaIntP=?, aRoleP=?, aLocP=?, aTenureP=?,aCompC=?, aCtcC=?, aAreaIntC=?, aRoleC=?, aLocC=?, aTenureC=? WHERE aRollno=?";   //left here
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssssssssssssss", $aRollno, $aName, $aEmail, $aPhone, $aPwd, $aCpi, $aCompP, $aCtcP, $aAreaIntP, $aRoleP, $aLocP, $aTenureP, $aCompC, $aCtcC, $aAreaIntC, $aRoleC, $aLocC, $aTenureC, $curraRollno);
-    $stmt->execute();
-    echo "Successfully Updated.";
-    exit;
+    if (!isset($_GET['decl']) || $_GET['decl'] != 'accepted')
+    {
+        echo "You must accept the declaration to edit profile.";
+    }
+    else
+    {
+        // Update the user's information in the "users" table
+        $sql = "UPDATE alumni SET aRollno=?, aName=?, aEmail=?, aPhone=?, aPassword=?, aCpi=?, aBatch=?, aCompP=?, aCtcP=?, aAreaIntP=?, aRoleP=?, aLocP=?, aTenureP=?,aCompC=?, aCtcC=?, aAreaIntC=?, aRoleC=?, aLocC=?, aTenureC=? WHERE aRollno=?";   //left here
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssssssssssssssss", $aRollno, $aName, $aEmail, $aPhone, $aPwd, $aCpi, $aBatch, $aCompP, $aCtcP, $aAreaIntP, $aRoleP, $aLocP, $aTenureP, $aCompC, $aCtcC, $aAreaIntC, $aRoleC, $aLocC, $aTenureC, $curraRollno);
+        $stmt->execute();
+        echo "Successfully Updated.";
+        exit;
+    }
 }
 ?>
