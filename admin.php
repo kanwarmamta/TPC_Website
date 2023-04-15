@@ -34,7 +34,9 @@
 <?php
 // Connect to the database
 require_once 'dbconfig.php';
-
+if(!empty($_GET['status'])){
+    echo '<div>You have been logged out!</div>';
+}
 function test_input($data) {
 	
 	$data = trim($data);

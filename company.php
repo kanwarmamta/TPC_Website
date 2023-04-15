@@ -35,6 +35,10 @@
 session_start();
 error_reporting(0);
 require_once 'dbconfig.php';
+if(!empty($_GET['status'])){
+    echo '<div>You have been logged out!</div>';
+}
+
 $err = "";
 $result=true;
 if (isset($_GET['login'])) {

@@ -38,22 +38,30 @@ if ($result)
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Delete Account</title>
+        <meta charset="UTF-8">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link rel="stylesheet" href="Delete.css">
     </head>
     <body>
-        <h1>Delete Account</h1>
-        <p>Do you want to delete your account? </p>
-        <form method="get">
-        <label for="confirm-yes">Yes</label>
-        <input type="radio" id="confirm-yes" name="confirm" value="yes"><br>
-
-        <label for="confirm-no">No</label>
-        <input type="radio" id="confirm-no" name="confirm" value="no" checked><br>
-
-        <input type="submit" value="confirm">
+        <form action="company.php" method="get">
+            <div class="delete-box">
+                <h1>Delete Account</h1>
+                <p style="font-size: 25px;">Do you want to delete your account? </p>
+                <label for="confirm-yes" class="container">YES
+                    <input type="radio" id="confirm-yes" name="confirm" value="yes">
+                    <span class="check"></span>
+                </label>
+                <label for="confirm-no" class="container">NO
+                    <input type="radio" id="confirm-no" name="confirm" value="no" checked>
+                    <span class="check"></span>
+                </label>
+                <input class="button" type="submit" name="confirm" value="Confirm">
+            </div>
         </form>
     </body>
 </html>
