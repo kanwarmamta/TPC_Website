@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-    <head lang="en">
+<html lang="en">
+    <head>
         <title>Recruiter's Login</title>
+        <meta charset="UTF-8">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link rel="stylesheet" href="Login.css">
     </head>
     <body>
-        <h1>Login Page</h1>  
         <form action="company.php" method="get">
-            Company ID: <input type="text" name="comId" maxlength="6"/><br>
-            Password: <input type="password" name="password" maxlength="20"/><br>
-            <input type="submit" name="login" value="Login"/><br>
-            <p>Not a member? <a href="com_register.php">Register</a></p>
+            <div class="login-box">
+			    <h1>Login</h1>
+
+			    <div class="textbox">
+				    <i class="fa fa-id-card" aria-hidden="true"></i>
+				    <input type="text" placeholder="Company ID" name="comId" value="" maxlength="6">
+			    </div>
+
+			    <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Password" name="password" value="" maxlength="20">
+			    </div>
+
+			    <input class="button" type="submit" name="login" value="Login">
+		
+                <p>Not a member? <a href="com_register.php">Register</a></p>
+            </div>
         </form>
     </body>
 </html>
@@ -20,6 +37,7 @@ error_reporting(0);
 require_once 'dbconfig.php';
 $err = "";
 $result=true;
+if (isset($_GET['login'])) {
 if ($result)
 {
     if(empty(trim($_GET["comId"])) || empty(trim($_GET["password"])))
@@ -71,5 +89,6 @@ if ($result)
             echo "Credentials mismatch.";
         }
     }  
-}   
+} 
+}  
 ?>

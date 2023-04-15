@@ -1,157 +1,116 @@
 <!DOCTYPE html>
-
-        <head lang="en">
-
-                <title>Almnus Company</title>
-
+<html lang="en">
+        <head>
+                <title>Register Alumni</title>
+                <meta charset="UTF-8">
+	        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	        <link rel="stylesheet" href="Register.css">
         </head>
-
         <body>
-
-                <h1>Alumni  Registration Form</h1>
-
                 <form action="Alu_register.php" method="get">
+                        <div class="register-box">
+			    <h1>Register</h1>
 
-                        Roll No: <input type="text" name="aRollno" maxlength="8"/><br>
+			    <div class="textbox">
+				    <i class="fa fa-id-card" aria-hidden="true"></i>
+				    <input type="text" placeholder="Roll Number" name="aRollno" value="" maxlength="8">
+			    </div>
 
-                        Name: <input type="text" name="aName" maxlength="50"/><br>
+                            <div class="textbox">
+				    <i class="fa fa-user" aria-hidden="true"></i>
+				    <input type="text" placeholder="Name" name="aName" value="" maxlength="50">
+			    </div>
 
-                        E-mail: <input type="text" name="aEmail" maxlength="100"/><br>
+                            <div class="textbox">
+				    <i class="fa fa-envelope" aria-hidden="true"></i>
+				    <input type="text" placeholder="E-mail" name="aEmail" value="" maxlength="100">
+			    </div>
 
-                        Phone Number: <input type="text" name="aPhone" maxlength="10"/><br>
+                            <div class="textbox">
+				    <i class="fa fa-phone" aria-hidden="true"></i>
+				    <input type="text" placeholder="Phone Number" name="aPhone" value="" maxlength="10">
+			    </div>
+                        
+			    <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Password" name="aPassword" value="" maxlength="20">
+			    </div>
 
-                        Password: <input type="password" name="aPassword" maxlength="20"/><br>
+                            <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Confirm Password" name="aCpw" value="" maxlength="20">
+			    </div>
 
-                        Confirm Password: <input type="password" name="aCpw" maxlength="20"/><br>
-
-                         <input type="submit" name="submit" value="Submit" />
-
-                        <input type="button" value="Login" class="homebutton" id="login" onClick="document.location.href='alumni.php'" />
-
+			    <input class="button" type="submit" name="submit" value="Submit">
+                        </div>
                 </form>
-
-        </body>     
-
+        </body>
 </html>
 
 <?php
-
 session_start();
-
 error_reporting(0);
+$msg="";
 
 require_once 'dbconfig.php';
 
 $aRollno=$_GET["aRollno"];
-
 $aName=$_GET["aName"];
 $aEmail=$_GET["aEmail"];
-
 $aPhone=$_GET["aPhone"];
-
 $aPwd=$_GET["aPassword"];
-
 $aCpw=$_GET["aCpw"];
-
 $result=true;
 
-$msg="";
-
-
-
+if (isset($_GET['submit'])) {
 $uppercase=preg_match('@[A-Z]@', $aPwd);
-
 $lowercase=preg_match('@[a-z]@', $aPwd);
-
 $number=preg_match('@[0-9]@', $aPwd);
-
 $specialChars=preg_match('@[^\w]@', $aPwd);
-
 $len=strlen(trim($aPwd));
 
-
-
 if(!filter_var($aEmail, FILTER_VALIDATE_EMAIL))
-
 {
-
     $result=false;
-
     echo "Invalid email format.";
-
 }
-
-
 
 if($result){
-
     if($aPwd==$aCpw){
-
         if($uppercase && $lowercase && $number && $specialChars)
-
         {
-
                 if($len>=8)
-
                 {
-
                         $msg="New record created successfully.";
                         echo $msg;
-
                         $sql="INSERT INTO alumni(aRollno, aName, aEmail, aPhone, aPassword) values('$aRollno','$aName', '$aEmail', '$aPhone', '$aPwd')";
-
                         $result=$conn->query($sql);
-
                         if($msg=="New record created successfully.")
-
                         {
-
                             header("location: alumni.php");
-
                         }
-
                         $result->free();
-
                 }
-
                 else
-
                 {
-
                         $result=false;
-
                         echo "Password must be atleast 8 characters long.";
-
                 }
-
         }
-
         else
-
         {
-
             $result=false;
-
             echo "Password must include at least one uppercase alphabet, one lowercase alphabet, one digit and special character.";
-
         }
-
     }
-
     else
-
     {
-
         $result=false;
-
         echo "Passwords don't match.";
-
     }
 }
-
+}
 $conn->close();
-
 ?>
-

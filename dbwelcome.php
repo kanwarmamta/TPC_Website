@@ -1,14 +1,10 @@
 <?php
    require_once 'dbconfig.php';
 ?>
-<!--#5FCF80 is color-->
+
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
@@ -65,13 +61,46 @@
   opacity: 1;
   right: 0;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: #f5f5f5;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f5f5f5;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 </style>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Training and PLacement Cell, IIT Patna</title>
+  <title>Training and Placement Cell, IIT Patna</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -85,7 +114,7 @@
 
 <body>
   <!--Navigation bar-->
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#191970;">
     <div class="container">
       <div class="navbar-header">
 
@@ -95,35 +124,36 @@
           <span class="icon-bar"></span>
         </button>
         
-
-        <div id ="left">  
-            <img src="col_logo.jpg" width="60px" height="60px" id=logo alt="Logo image" style="margin-left: 0px;" />
+        <div class="col-md-3 col-sm-6 col-xs-12 left" id ="left">  
+            <img src="col_logo.png" width="100px" height="100px" id=logo alt="Logo image" style="margin-left: 0px;" />
         </div>
-        <a class="navbar-brand" href="dbwelcome.php"><span> Training and Placement Cell, IIT Patna</span></a>
-        <!-- <br>
-        <a class="navbar-brand" href="dbwelcome.php"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ</span></a> -->
+        <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;"><span> Training and Placement Cell, IIT Patna</span></a>
+        <br>
+        <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ</span></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar" >
         <ul class="nav navbar-nav navbar-right">
             
-            <li><a href="student.php">Student</a></li>
-            <li><a href="company.php">Company</a></li>
-            <li><a href="alumni.php">Alumni</a></li>
-            <li><a href="placement.php">Placements</a></li>
-            <li><a href="#contactus">Contact Us</a></li>
-            <li><a href="#aboutus">About us</a></li>
-          
-          
-          <!-- <li><a href="#" data-target="#login" data-toggle="modal">Log in</a></li>
-          <li class="btn-trial"><a href="#" data-target="#signin" data-toggle="modal">Sign in</a></li> -->
+            <li><a href="student.php" style="color:#f5f5f5;">Student</a></li>
+            <li><a href="company.php" style="color:#f5f5f5;">Company</a></li>
+            <li><a href="alumni.php" style="color:#f5f5f5;">Alumni</a></li>
+            <li><a href="Trends.php" style="color:#f5f5f5;">Placement Statistics</a></li>
+            <li>
+              <div class="dropdown">
+                <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
+                <div class="dropdown-content">
+                <a href="admin.php">Admin Login</a>
+                <a href="tpo.php">TPO Login</a>
+                </div>
+              </div>
+            </li>
+
         </ul>
       </div>
     </div>
   </nav>
   <!--/ Navigation bar-->
- 
-    
-    
+
   <div class="banner">
     <div class="bg-color">
       <div class="container">
@@ -133,9 +163,7 @@
               <h2 class="text-dec">Learn To Code</h2>
             </div>
             <div class="intro-para text-center quote">
-              <p class="big-text">First you Learn ,then you remove the 'L'</p>
-              <p class="small-text">An easy and organized way to explore the world of coding through the window of our website</p>
-              <a href="#footer" class="btn get-quote">GIVE A SUGGESTION</a>
+              <p><br><br></p>
             </div>
             <a href="#feature" class="mouse-hover">
               <div class="mouse"></div>
@@ -146,177 +174,64 @@
     </div>
   </div>
   <!--/ Banner-->
-  
- 
-  <!--Testimonial-->
-  <section id="testimonial" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="header-section text-center">
-          <h2 class="white">XXXX?</h2>
-          <p class="white">XXX<br> It means a lot to us.</p>
-          <hr class="bottom-line bg-white">
-        </div>
-        <div class="col-md-6 col-sm-6">
-          <div class="text-comment">
-            <p class="text-par">"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem"</p>
-            <p class="text-name">Abraham Doe - Creative Dırector</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6">
-          <div class="text-comment">
-            <p class="text-par">"Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, nec sagittis sem"</p>
-            <p class="text-name">Abraham Doe - Creative Dırector</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Testimonial-->
-  <!--Director msg-->
-  <section id="director_msg" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="header-section text-center">
-          <h2>Director's Message</h2>
-          <p>Thousands of coding courses are at your disposal<br>,So what are you waiting for!</p>
-          <hr class="bottom-line">
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course01.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course02.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course03.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course04.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course05.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-        <div class="col-md-4 col-sm-6 padleft-right">
-          <figure class="imghvr-fold-up">
-            <img src="img/course06.jpg" class="img-responsive">
-            <figcaption>
-              <h3>Course Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam atque, nostrum veniam consequatur libero fugiat, similique quis.</p>
-            </figcaption>
-            <a href="#"></a>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ dir_msg-->
+
   <!--aboutus-->
   <section id="aboutus" class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="header-section text-center">
-          <h2>About Us</h2>
-          <p>Get professional and complete access to our website<br>,and let the Learning Begin!</p>
+        <div class="header-section text-left">
+          <h2 style="color:#191970;">About Us</h2>
           <hr class="bottom-line">
         </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="price-table">
-            <!-- Plan  -->
-            <div class="pricing-head">
-              <h4>Monthly Plan</h4>
-              <span class="fa fa-usd curency"></span> <span class="amount">200</span>
-            </div>
-
-            <!-- Plean Detail -->
-            <div class="price-in mart-15">
-              <a href="#" class="btn btn-bg green btn-block">PURCHACE</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="price-table">
-            <!-- Plan  -->
-            <div class="pricing-head">
-              <h4>Quarterly Plan</h4>
-              <span class="fa fa-usd curency"></span> <span class="amount">800</span>
-            </div>
-
-            <!-- Plean Detail -->
-            <div class="price-in mart-15">
-              <a href="#" class="btn btn-bg yellow btn-block">PURCHACE</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="price-table">
-            <!-- Plan  -->
-            <div class="pricing-head">
-              <h4>Year Plan</h4>
-              <span class="fa fa-usd curency"></span> <span class="amount">1200</span>
-            </div>
-
-            <!-- Plean Detail -->
-            <div class="price-in mart-15">
-              <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-6 padleft-right text-justify">
+              <p>The Indian Institute of Technology Patna epitomizes and reveres this limitless power in every way of its life and functioning. Established as an institute of national importance through an act of parliament in 2008, IIT Patna strives to provide world class education and an intellectually stimulating environment in an endeavor to develop well rounded individuals with technical and professional competence of the highest degree.</p>
+              <p>The Training and Placement Cell of the institute handles all aspects of placements at IIT Patna for the graduating students of all departments. Right from contacting companies to managing all logistics of arranging for tests, pre-placement talks and conducting final interviews the Training and Placement Cell officials and volunteers provide their best possible assistance to the recruiters.</p>
         </div>
       </div>
     </div>
   </section>
   <!--/ aboutus-->
+
+  <!--Director msg-->
+  <section id="director_msg" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="header-section text-left">
+          <h2 style="color:#191970;">Director's Message</h2>
+          <hr class="bottom-line">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-sm-6 padleft-right text-justify">
+              <p>The Indian Institute of Technology Patna is one of the new IITs established by an Act of the Indian Parliament on August 6, 2008 and is recognized as an Institute of National Importance by the Government of India. Currently, IIT Patna has ten departments which offer B.Tech., M.Tech., M.Sc., and Ph.D. programs. Since its inception, IIT Patna has pursued excellence with steadfast determination. The Institute has developed modern facilities that are fully equipped with state-of-the-art facilities that are routinely used to train and educate students. Also, we keep our curriculum updated and provide ample extra-curricular opportunities for the students. As a result, our students excel both in knowledge and leadership skills.</p>
+              <p>Patna has been a center of knowledge and a land of visionaries since long and has been attracting visitors and scholars from many parts of the world. Some of the legends from this region include Lord Gautam Buddha, Lord Mahavir, Guru Gobind Singh, the famous astronomer Aryabhatta, and the first President of India, Dr. Rajendra Prasad. IIT Patna strives to carry the baton passed through these visionaries to become a beacon of knowledge and wisdom.</p>
+              <p>IIT Patna invites the recruiters to the Campus Recruitment Program for 2022-23 Batch, to give this batch of graduating students an opportunity to prove themselves and to add value to the organizations they join. We assure you that this will be a positive experience for the recruiters and a step forward in improving upon past relations and building new ones.</p>
+              <p>I welcome you to become a part of our story and to form a long-lasting association with the institute.</p>
+              <p>Prof. T.N. Singh,<br>Director, Indian Institute of Technology Patna</p>
+        </div>
+        <div class="col-md-3 col-sm-6 padleft-left">
+            <img src="dir.jpg" width="300px" height="350px" id=logo alt="Dir image" style="margin-left: 0px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ dir_msg-->
+
   <!--Contact-->
   <section id="contactus" class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="header-section text-center">
-          <h2>Contact Us</h2>
-          <p>All the user visiting the website can contact us any any time by sending their message </p>
-               <p>We will do our best to solve your queries</p>
+        <div class="header-section text-left">
+          <h2 style="color:#191970;">Contact Us</h2>
           <hr class="bottom-line">
         </div>
   
-        
         <form action="contact.php" method="get"  >
           <div class="col-md-6 col-sm-6 col-xs-12 left">
             <div class="form-group">
@@ -343,74 +258,30 @@
           <div class="col-xs-12">
            
               <input  type="submit"  class="form contact-form-button light-form-button oswald light" value="Send message">
+              <hr class="bottom-line">
+              <div class="col-md-6 col-sm-6 col-xs-12 left">
+                <p>Interested companies can directly contact through<br>Email: tpc@iitp.ac.in & pic_tnp@iitp.ac.in<br>Please feel free to contact us at +91-6115-233 091/083 and +91-8102917501</p>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12 left">
+                <p>Address:<br>Training and Placement Cell, IIT Patna, Bihta Campus,<br>Bihta Kanpa Road, Bihta, Bihar Pin - 801106, India.</p>
+              </div>
           </div>
         </form>
-
-          
-    
-
-
-
-
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-
       </div>
     </div>
   </section>
   <!--/ Contact-->
   <!--Footer-->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer" style="background-color:#191970;">
     <div class="container text-center">
 
-      <h3>Suggestions Are Welcomed</h3>
-
-      <form class="mc-trial row" action="review.php" method="get">
-        <div class="form-group col-md-3 col-md-offset-2 col-sm-4">
-          <div class=" controls">
-            <input name="username" placeholder="Enter Your FullName" class="form-control" type="text">
-          </div>
-        </div>
-        <!-- End email input -->
-        <div class="form-group col-md-3 col-sm-4">
-          <div class=" controls">
-            <input name="comment" placeholder="Enter Your Suggestion" class="form-control" type="text">
-          </div>
-        </div>
-        <!-- End email input -->
-        <div class="col-md-2 col-sm-4">
-          <p>
-            <button name="submit" type="submit" class="btn btn-block btn-submit">
-            Suggest this! <i class="fa fa-arrow-right"></i></button>
-          </p>
-        </div>
-      </form>
-      <!-- End newsletter-form -->
-      <ul class="social-links">
-        <li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-        <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-        <li><a href="#link"><i class="fa fa-google-plus fa-fw"></i></a></li>
-        <li><a href="#link"><i class="fa fa-dribbble fa-fw"></i></a></li>
-        <li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
-      </ul>
-      ©xxx iitp tpc team21  All rights reserved
-      <div class="credits">
-        <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor
-        -->
-        Designed by <a href="https://amoldalwai.com/">XXX</a>
+      <ul class="social-links" style="color:#f5f5f5;">
+        <li><a href="https://www.facebook.com/iitpatna.tpc" style="color:#f5f5f5;"><i class="fa fa-facebook" ></i></a></li>
+        <li><a href="https://www.linkedin.com/in/tpciitpatna" style="color:#f5f5f5;"><i class="fa fa-linkedin"></i></a></li>
+      </ul >
+      <p style="color:#f5f5f5;">©TPC, IITP  All rights reserved</p>
+      <div class="credits" style="color:#f5f5f5;">
+        Designed by Amisha, Mamta, Nishita
       </div>
     </div>
   </footer>
@@ -423,6 +294,4 @@
   <script src="contactform/contactform.js"></script>
 
 </body>
-
-
 </html>

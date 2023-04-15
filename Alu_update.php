@@ -22,7 +22,7 @@
             Current Company : <input type="text" name="aCompC" maxlength="50"/><br>
             Current CTC: <input type="number" name="aCtcC"/><br>
             Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
-            current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
+            Current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
             Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
             Current Company  Tenure: <input type="number" name="aTenureC"/><br>  
             <input type="submit" name="submit" value="Update" />

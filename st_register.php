@@ -1,26 +1,60 @@
 <!DOCTYPE html>
-        <head lang="en">
+<html lang="en">
+        <head>
                 <title>Register Student</title>
+                <meta charset="UTF-8">
+	        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	        <link rel="stylesheet" href="Register.css">
         </head>
-        <body>
-                <h1>Student Registration Form</h1>                
+        <body>               
                 <form action="st_register.php" method="get">
-                        Roll No: <input type="text" name="stRollno" maxlength="8"/><br>
-                        Name: <input type="text" name="stName" maxlength="50"/><br>
-                        Webmail: <input type="text" name="stWebmail" maxlength="100"/><br>
-                        Phone Number: <input type="text" name="stPhone" maxlength="10"/><br>
-                        Password: <input type="password" name="stPassword" maxlength="20"/><br>
-                        Confirm Password: <input type="password" name="stCpw" maxlength="20"/><br>
-                        <input type="submit" name="submit" value="Submit" />
-                        <input type="button" value="Login" class="homebutton" id="login" onClick="document.location.href='student.php'" />
+                        <div class="register-box">
+			    <h1>Register</h1>
+
+			    <div class="textbox">
+				    <i class="fa fa-id-card" aria-hidden="true"></i>
+				    <input type="text" placeholder="Roll Number" name="stRollno" value="" maxlength="8">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-user" aria-hidden="true"></i>
+				    <input type="text" placeholder="Name" name="stName" value="" maxlength="50">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-envelope" aria-hidden="true"></i>
+				    <input type="text" placeholder="Webmail" name="stWebmail" value="" maxlength="100">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-phone" aria-hidden="true"></i>
+				    <input type="text" placeholder="Phone Number" name="stPhone" value="" maxlength="10">
+			    </div>
+                        
+			    <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Password" name="stPassword" value="" maxlength="20">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Confirm Password" name="stCpw" value="" maxlength="20">
+			    </div>
+
+			    <input class="button" type="submit" name="submit" value="Submit">
+                        </div>
                 </form>
         </body>     
 </html>
 
 <?php
 session_start();
-// error_reporting(0);
+error_reporting(0);
+$msg="";
+if (isset($_GET['submit']))
+{
 require_once 'dbconfig.php';
 $stRollno=$_GET["stRollno"];
 $stName=$_GET["stName"];
@@ -29,7 +63,7 @@ $stPhone=$_GET["stPhone"];
 $stPwd=$_GET["stPassword"];
 $stCpw=$_GET["stCpw"];
 $result=true;
-$msg="";
+
 
 $uppercase=preg_match('@[A-Z]@', $stPwd);
 $lowercase=preg_match('@[a-z]@', $stPwd);
@@ -76,6 +110,7 @@ if($result){
         $result=false;
         echo "Passwords don't match.";
     }              
+}
 }
 $conn->close();
 ?>

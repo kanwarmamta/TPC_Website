@@ -1,19 +1,50 @@
 <!DOCTYPE html>
-        <head lang="en">
+<html lang="en">
+        <head>
                 <title>Register Company</title>
+                <meta charset="UTF-8">
+	        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	        <link rel="stylesheet" href="Register.css">
         </head>
-        <body>
-                <h1>Company Registration Form</h1>                
+        <body>              
                 <form action="com_register.php" method="get">
-                        Company ID: <input type="text" name="comId" maxlength="6"/><br>
-                        Company Name: <input type="text" name="comName" maxlength="50"/><br>
-                        E-mail: <input type="text" name="comEmail" maxlength="100"/><br>
-                        Phone Number: <input type="text" name="comPhone" maxlength="10"/><br>
-                        Password: <input type="password" name="comPassword" maxlength="20"/><br>
-                        Confirm Password: <input type="password" name="comCpw" maxlength="20"/><br>
-                        <input type="submit" name="submit" value="Submit" />
-                        <input type="button" value="Login" class="homebutton" id="login" onClick="document.location.href='company.php'" />
+                        <div class="register-box">
+			    <h1>Register</h1>
+
+			    <div class="textbox">
+				    <i class="fa fa-id-card" aria-hidden="true"></i>
+				    <input type="text" placeholder="Company ID" name="comId" value="" maxlength="6">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-user" aria-hidden="true"></i>
+				    <input type="text" placeholder="Company Name" name="comName" value="" maxlength="50">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-envelope" aria-hidden="true"></i>
+				    <input type="text" placeholder="E-mail" name="comEmail" value="" maxlength="100">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-phone" aria-hidden="true"></i>
+				    <input type="text" placeholder="Phone Number" name="comPhone" value="" maxlength="10">
+			    </div>
+                        
+			    <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Password" name="password" value="" maxlength="20">
+			    </div>
+
+                            <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Confirm Password" name="comCpw" value="" maxlength="20">
+			    </div>
+
+			    <input class="button" type="submit" name="submit" value="Submit">
+                        </div>
                 </form>
         </body>     
 </html>
@@ -21,6 +52,10 @@
 <?php
 session_start();
 error_reporting(0);
+$msg="";
+if (isset($_GET['submit']))
+{
+
 require_once 'dbconfig.php';
 $comId=$_GET["comId"];
 $comName=$_GET["comName"];
@@ -29,7 +64,7 @@ $comPhone=$_GET["comPhone"];
 $comPwd=$_GET["comPassword"];
 $comCpw=$_GET["comCpw"];
 $result=true;
-$msg="";
+
 
 $uppercase=preg_match('@[A-Z]@', $comPwd);
 $lowercase=preg_match('@[a-z]@', $comPwd);
@@ -76,6 +111,7 @@ if($result){
         $result=false;
         echo "Passwords don't match.";
     }              
+}
 }
 $conn->close();
 ?>

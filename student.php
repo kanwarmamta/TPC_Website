@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-    <head lang="en">
+<html lang="en">
+        <head>
         <title>Student Login</title>
+        <meta charset="UTF-8">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link rel="stylesheet" href="Login.css">
     </head>
     <body>
-        <h1>Student Login Page</h1>  
         <form action="student.php" method="get">
-           Roll No: <input type="char" name="stRollno" maxlength="8"/><br>
-           <!-- Name: <input type="varchar" name="sName" maxlength="50"/><br>
-           Webmail: <input type="varchar" name="sWebmail" maxlength="100"/><br> -->
-            Password: <input type="password" name="stPassword" maxlength="20"/><br>
-            <input type="submit" name="login" value="Login"/>
-            <p>
-  		Not a member? <a href="st_register.php">Register</a>
-  	</p>
+            <div class="login-box">
+			    <h1>Login</h1>
+
+			    <div class="textbox">
+				    <i class="fa fa-id-card" aria-hidden="true"></i>
+				    <input type="text" placeholder="Roll Number" name="stRollno" value="" maxlength="8">
+			    </div>
+
+			    <div class="textbox">
+				    <i class="fa fa-lock" aria-hidden="true"></i>
+				    <input type="password" placeholder="Password" name="stPassword" value="" maxlength="20">
+			    </div>
+
+			    <input class="button" type="submit" name="login" value="Login">
+		
+                <p>Not a member? <a href="st_register.php">Register</a></p>
+            </div>
         </form>
     </body>
 </html>
@@ -28,6 +41,7 @@ if(!empty($_GET['status'])){
 
 $err = "";
 $result=true;
+if (isset($_GET['login'])) {
 if ($result)
 {
     if(empty(trim($_GET["stRollno"])) || empty(trim($_GET["stPassword"])))
@@ -82,4 +96,5 @@ if ($result)
         }
     }  
 }   
+}
 ?>

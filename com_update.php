@@ -13,15 +13,15 @@
             Phone Number: <input type="text" name="comPhone" maxlength="10"/><br>
             Password: <input type="password" name="comPassword" maxlength="20"/><br>
             Required Candidates: <input type="number" name="reqCandi"/><br>
-            Minimum Qualification: <input type="number" name="minQual" placeholder="YYYY" min="2023" max="2026">
+            Graduating Year: <input type="number" name="minQual" placeholder="YYYY" min="2023" max="2026">
                 <script>
                     document.querySelector("input[type=number]")
                     .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
                 </script><br>
-            Standard 10th Marks Criteria: <input type="number" step="0.01" name="10thCri" maxlength="5"/><br>
-            Standard 12th Marks Criteria: <input type="number" step="0.01" name="12thCri" maxlength="5"/><br>
+            Grade 10 Marks Criteria: <input type="number" step="0.01" name="10thCri" maxlength="5"/><br>
+            Grade 12 Marks Criteria: <input type="number" step="0.01" name="12thCri" maxlength="5"/><br>
             CPI Criteria: <input type="number" step="0.01" name="cpiCri" maxlength="5"/><br>
-            Salary Package: <input type="number" name="salpack"/><br>
+            Salary Package (in LPA): <input type="number" name="salpack"/><br>
             Mode of Interview [Online/Offline]: <input type="text" name="mode" maxlength="7"/><br>
             Mode of Interview [Written/Interview]: <input type="text" name="mode1" maxlength="9"/><br>
             Year since recruiting from IIT Patna: <input type="number" name="yearrec" placeholder="YYYY" min="2008" max="2023">
