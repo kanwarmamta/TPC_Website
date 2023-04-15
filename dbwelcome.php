@@ -3,6 +3,7 @@
 ?>
 
 <!DOCTYPE html>
+<html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -35,7 +36,6 @@
   cursor: pointer;
   margin: 5px;
 }
-
 .mybutton span {
   cursor: pointer;
   display: inline-block;
@@ -43,7 +43,6 @@
   transition: 0.5s;
   top:0;
 }
-
 .mybutton span:after {
   content: '\00bb';
   position: absolute;
@@ -52,11 +51,9 @@
   right: -20px;
   transition: 0.5s;
 }
-
 .mybutton:hover span {
   padding-right: 25px;
 }
-
 .mybutton:hover span:after {
   opacity: 1;
   right: 0;
@@ -65,38 +62,31 @@
   position: relative;
   display: inline-block;
 }
-
 .dropbtn {
   color: #f5f5f5;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
   background-color: #f5f5f5;
-  min-width: 160px;
+  min-width: 120px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
 .dropdown-content a {
   color: #333;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 </style>
-<html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,24 +120,23 @@
         <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;"><span> Training and Placement Cell, IIT Patna</span></a>
         <br>
         <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ</span></a>
+        <!-- <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ, आईआईटी पटना</span></a> -->
       </div>
       <div class="collapse navbar-collapse" id="myNavbar" >
         <ul class="nav navbar-nav navbar-right">
-            
-            <li><a href="student.php" style="color:#f5f5f5;">Student</a></li>
-            <li><a href="company.php" style="color:#f5f5f5;">Company</a></li>
-            <li><a href="alumni.php" style="color:#f5f5f5;">Alumni</a></li>
-            <li><a href="Trends.php" style="color:#f5f5f5;">Placement Statistics</a></li>
             <li>
               <div class="dropdown">
                 <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
                 <div class="dropdown-content">
-                <a href="admin.php">Admin Login</a>
-                <a href="tpo.php">TPO Login</a>
+                <a href="student.php">Student</a>
+                <a href="company.php">Company</a>
+                <a href="alumni.php">Alumni</a>
+                <a href="admin.php">Admin</a>
+                <a href="tpo.php">TPO</a>
                 </div>
               </div>
             </li>
-
+            <li><a href="Trends.php" style="color:#f5f5f5;">Placement Statistics</a></li>
         </ul>
       </div>
     </div>
