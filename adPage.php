@@ -237,7 +237,9 @@ if (mysqli_num_rows($result) > 0) {
 
     $row = mysqli_fetch_assoc($result);
 
-    echo "Number of  students Placed : " . $row['total'];
+    echo '<span style="font-size: 20px;">Number of students Placed : ' . $row['total'] . '</span>';
+
+
 
 } else {
 
@@ -251,7 +253,9 @@ $result = mysqli_query($conn, $sql);
 
     $unselected_count = mysqli_num_rows($result);
 
-    echo "Number of  students unplaced: " . $unselected_count;
+    echo '<span style="font-size: 20px;">Number of students unplaced: ' . $unselected_count . '</span>';
+
+
 
 
     $sql = "SELECT s.stRollno,s.stName,s.stBatch,c.comName,c.salpack FROM student as s inner join applied as a on a.stRollno=s.stRollno  inner join company as c on c.comId=a.comId and a.status='selected'";
