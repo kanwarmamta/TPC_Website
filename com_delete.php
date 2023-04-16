@@ -109,7 +109,7 @@ if ($result)
             </div>
         </div>
         <!--/ Banner-->
-        <form action="company.php" method="get">
+        <form action="com_delete.php" method="get">
             <div class="delete-box">
                 <h1>Delete Account</h1>
                 <p style="font-size: 25px;">Do you want to delete your account? </p>
