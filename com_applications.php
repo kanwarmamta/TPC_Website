@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Company Applicants</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="navbar.css">
   <style>
 
     table {
@@ -37,6 +39,65 @@
   </style>
 </head>
 <body>
+  <!--Navigation bar-->
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#191970;">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+        
+                    <div class="col-md-3 col-sm-6 col-xs-12 left" id ="left">  
+                        <img src="col_logo.png" width="100px" height="100px" id=logo alt="Logo image" style="margin-left: 0px;" />
+                    </div>
+                    <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;"><span> Training and Placement Cell, IIT Patna</span></a>
+                    <br>
+                    <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ</span></a>
+                    <!-- <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ, आईआईटी पटना</span></a> -->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar" >
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><div class="dropdown">
+                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
+                            <div class="dropdown-content">
+                                <a href="student.php">Student</a>
+                                <a href="company.php">Company</a>
+                                <a href="alumni.php">Alumni</a>
+                                <a href="admin.php">Admin</a>
+                                <a href="tpo.php">TPO</a>
+                            </div>
+                        </div></li>   
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--/ Navigation bar-->
+
+        <!-- Banner-->
+        <div class="banner">
+            <div class="bg-color">
+                <div class="container">
+                    <div class="row">
+                        <div class="banner-text text-center">
+                            <div class="text-border">
+                                <h2 class="text-dec">Learn To Code</h2>
+                            </div>
+                            <div class="intro-para text-center quote">
+                                <p><br><br></p>
+                            </div>
+                            <a href="#feature" class="mouse-hover">
+                                <div class="mouse"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Banner-->
   <h1>Company Applicants</h1>
 <?php
 session_start();
