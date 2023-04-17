@@ -1,41 +1,18 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-
-  <title>Admin Page</title>
-  <?php
-  $show_custom_query_form = false;
-  if(isset($_POST['show_sqldata'])) {
-    $show_custom_query_form = true;
-  }
-?>
-
-
+  <title>Tpo Page</title>
   <form method="post">
-		<input type="submit" class="my-button" name="show_data" value="Show Alumni Table">
-        <input type="submit" class="my-button" name="show_comdata" value="Show Company Table">
-        <input type="submit"class="my-button" name="show_stdata" value="Show Student Table">
-        <input type="submit" class="my-button" name="show_applydata" value="Applied Student Status ">
-        <input type="submit" class="my-button" name="show_selectdata" value="Selected Student Data">
-        <input type="submit" class="my-button" name="show_sqldata" value="Data acc. to SQL queries">
-        
+		<input type="submit" name="show_data" value="Show Alumni Table">
+        <input type="submit" name="show_comdata" value="Show Company Table">
+        <input type="submit" name="show_stdata" value="Show Student Table">
+        <input type="submit" name="show_applydata" value="Applied Student Status ">
+        <input type="submit" name="show_selectdata" value="Selected Student Data">
+        <input type="submit" name="show_companywise" value="Selected Company Wise  Data">
+        <input type="submit" name="show_queries" value="Student Raised Queries">
+        <input type="submit" name="show_logout" value="Logout">
 	</form>
-  
-  
-  <?php
-  if($show_custom_query_form) {
-?>
-  <form method="POST" action="">
-  <label for="custom_query">Enter Custom Query:</label><br>
-  <textarea id="custom_query" name="custom_query" rows="4" cols="50"></textarea><br>
-  <input type="submit" class="new-button" name="show_custom_query" value="Show Custom Query Result">
-</form>
-<?php
-  }
-?>
-
-<style>
+  <style>
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0;
@@ -139,25 +116,40 @@
 </head>
 <body>
   <?php
-  
-  if(isset($_POST['show_data'])) {
+ if(isset($_POST['show_stdata'])) {
     require_once 'dbconfig.php';
 
-    $sql = "SELECT * FROM alumni";
+    $sql = "SELECT * FROM student";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Phone</th><th>CPI</th><th>Company (Previous)</th><th>CTC (Previous)</th><th>Area of Interest (Previous)</th><th>Role (Previous)</th><th>Location (Previous)</th><th>Tenure (Previous)</th><th>Company (Current)</th><th>CTC (Current)</th><th>Area of Interest (Current)</th><th>Role (Current)</th><th>Location (Current)</th><th>Tenure (Current)</th></tr>";
+        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>Password</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["aRollno"]. "</td><td>" . $row["aName"]. "</td><td>" . $row["aEmail"]. "</td><td>" . $row["aPhone"]. "</td><td>" . $row["aCpi"]. "</td><td>" . $row["aCompP"]. "</td><td>" . $row["aCtcP"]. "</td><td>" . $row["aAreaIntP"]. "</td><td>" . $row["aRoleP"]. "</td><td>" . $row["aLocP"]. "</td><td>" . $row["aTenureP"]. "</td><td>" . $row["aCompC"]. "</td><td>" . $row["aCtcC"]. "</td><td>" . $row["aAreaIntC"]. "</td><td>" . $row["aRoleC"]. "</td><td>" . $row["aLocC"]. "</td><td>" . $row["aTenureC"]. "</td></tr>";
-      }
+        echo "<tr>
+        <td>".$row['stRollno']."</td>
+        <td>".$row['stName']."</td>
+        <td>".$row['stWebmail']."</td>
+        <td>".$row['stPhone']."</td>
+        <td>".$row['stPassword']."</td>
+        <td".$row['st10thPer']."</td>
+        <td>".$row['st12thPer']."</td>
+        <td>".$row['stcurrCpi']."</td>
+        <td>".$row['stAge']."</td>
+        <td>".$row['stSpec']."</td>
+        <td>".$row['stInterest']."</td>
+        <td>".$row['stBatch']."</td>
+        <td>".$row['stPlaced']."</td>
+        <td>".$row['stPack']."</td>
+        </tr>";
+    
+    }
       echo "</table>";
     } else {
       echo "0 results";
     }
 
     mysqli_close($conn);
-}
+} 
 if(isset($_POST['show_comdata'])) {
     require_once 'dbconfig.php';
 
@@ -191,33 +183,18 @@ if(isset($_POST['show_comdata'])) {
 
     mysqli_close($conn);
 }
-if(isset($_POST['show_stdata'])) {
+
+if(isset($_POST['show_data'])) {
     require_once 'dbconfig.php';
 
-    $sql = "SELECT * FROM student";
+    $sql = "SELECT * FROM alumni";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>Password</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
+      echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Phone</th><th>CPI</th><th>Company (Previous)</th><th>CTC (Previous)</th><th>Area of Interest (Previous)</th><th>Role (Previous)</th><th>Location (Previous)</th><th>Tenure (Previous)</th><th>Company (Current)</th><th>CTC (Current)</th><th>Area of Interest (Current)</th><th>Role (Current)</th><th>Location (Current)</th><th>Tenure (Current)</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>
-        <td>".$row['stRollno']."</td>
-        <td>".$row['stName']."</td>
-        <td>".$row['stWebmail']."</td>
-        <td>".$row['stPhone']."</td>
-        <td>".$row['stPassword']."</td>
-        <td".$row['st10thPer']."</td>
-        <td>".$row['st12thPer']."</td>
-        <td>".$row['stcurrCpi']."</td>
-        <td>".$row['stAge']."</td>
-        <td>".$row['stSpec']."</td>
-        <td>".$row['stInterest']."</td>
-        <td>".$row['stBatch']."</td>
-        <td>".$row['stPlaced']."</td>
-        <td>".$row['stPack']."</td>
-        </tr>";
-    
-    }
+        echo "<tr><td>" . $row["aRollno"]. "</td><td>" . $row["aName"]. "</td><td>" . $row["aEmail"]. "</td><td>" . $row["aPhone"]. "</td><td>" . $row["aCpi"]. "</td><td>" . $row["aCompP"]. "</td><td>" . $row["aCtcP"]. "</td><td>" . $row["aAreaIntP"]. "</td><td>" . $row["aRoleP"]. "</td><td>" . $row["aLocP"]. "</td><td>" . $row["aTenureP"]. "</td><td>" . $row["aCompC"]. "</td><td>" . $row["aCtcC"]. "</td><td>" . $row["aAreaIntC"]. "</td><td>" . $row["aRoleC"]. "</td><td>" . $row["aLocC"]. "</td><td>" . $row["aTenureC"]. "</td></tr>";
+      }
       echo "</table>";
     } else {
       echo "0 results";
@@ -251,12 +228,45 @@ if(isset($_POST['show_applydata'])) {
 }
 if(isset($_POST['show_selectdata'])) {
     require_once 'dbconfig.php';
+    
+    $sql = "SELECT COUNT(*) as total FROM applied WHERE status = 'selected'";
+
+$result = mysqli_query($conn, $sql);
+
+echo"<br>";
+echo"<br>";
+
+if (mysqli_num_rows($result) > 0) {
+
+    $row = mysqli_fetch_assoc($result);
+
+    echo '<span style="font-size: 20px;">Number of students Placed : ' . $row['total'] . '</span>';
+
+
+
+} else {
+
+    echo "0 results";
+
+}
+$sql = "SELECT * FROM applied WHERE status != 'selected'";
+echo"<br>";
+echo"<br>";
+$result = mysqli_query($conn, $sql);
+
+    $unselected_count = mysqli_num_rows($result);
+
+    echo '<span style="font-size: 20px;">Number of students unplaced: ' . $unselected_count . '</span>';
+
+
+
 
     $sql = "SELECT s.stRollno,s.stName,s.stBatch,c.comName,c.salpack FROM student as s inner join applied as a on a.stRollno=s.stRollno  inner join company as c on c.comId=a.comId and a.status='selected'";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
         die('Error executing query: ' . mysqli_error($conn));
       }
+      
     if (mysqli_num_rows($result) > 0) {
       echo "<table><tr><th>Roll Number</th><th>Student Name</th><th>Student Batch</th><th>Company Name</th><th>CTC Offered</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
@@ -273,53 +283,78 @@ if(isset($_POST['show_selectdata'])) {
 
     mysqli_close($conn);
 }
-if(isset($_POST['show_custom_query'])) {
+if(isset($_POST['show_companywise'])) {
   require_once 'dbconfig.php';
+  $sql = "SELECT c.comName, c.salpack, COUNT(a.status) AS numSelected FROM company AS c LEFT JOIN applied AS a ON c.comId = a.comId AND a.status = 'selected'GROUP BY c.comId, c.comName, c.salpack";
 
-  // Get custom query input from user
-$query = $_POST['custom_query'];
-// Check if query is empty
-if(empty($query)) {
-  die('Error: Query is empty');
-}
-// Sanitize the input query
-$query = mysqli_real_escape_string($conn, $_POST['custom_query']);
 
-// Execute the query
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $sql);
 if (!$result) {
   die('Error executing query: ' . mysqli_error($conn));
 }
-
-// Get number of columns in the query result
-$num_cols = mysqli_num_fields($result);
-
-// Print table header
-echo "<table>";
-echo "<tr>";
-for ($i = 0; $i < $num_cols; $i++) {
-    $col_name = mysqli_fetch_field_direct($result, $i)->name;
-    echo "<th>".$col_name."</th>";
+if (mysqli_num_rows($result) > 0) {
+echo "<table><tr><th>Company Name</th><th>Package</th><th>Number of Selected Students</th></tr>";
+  while($row = mysqli_fetch_assoc($result)) {
+      echo "<tr><td>" . $row["comName"]. "</td><td>" . $row["salpack"]. "</td><td>" . $row["numSelected"]. "</td></tr>";
+  }
+  echo "</table>";
+} else {
+  echo "0 results";
 }
-echo "</tr>";
 
-// Loop through results and print each row in table
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    for ($i = 0; $i < $num_cols; $i++) {
-        echo "<td>".$row[mysqli_fetch_field_direct($result, $i)->name]."</td>";
+}
+
+if(isset($_POST['show_queries'])) {
+    require_once 'dbconfig.php';
+
+    $sql = "SELECT * FROM stqueries";
+    
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Query raised</th><th>Query Status</th></tr>";
+     
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+            $stRollno = $row["stRollno"];
+            $qid = $row["qid"];
+            $qStatus = $row["qStatus"];
+            echo "<tr><td>" . $row["stRollno"]. "</td><td>" . $row["stName"]. "</td><td>" . $row["stWebmail"]. "</td><td>" . $row["stquery"]. "</td>";
+    
+            // display "Pending" button and update query status when clicked
+            echo "<td>";
+            if ($qStatus == "pending") {
+                echo "<button onclick=\"location.href='?qid=$qid'\">Pending</button>";
+                if (isset($_GET["qid"]) && $_GET["qid"] == $qid) {
+                    $updateSql = "UPDATE stqueries SET qStatus='Resolved' WHERE qid= $qid";
+                    $updateResult = mysqli_query($conn, $updateSql);
+                    if ($updateResult) {
+                        $qStatus = "Resolved";
+                        echo "<script>alert('Query resolved successfully.');</script>";
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    } else {
+                        echo "Error resolving the raised query " . mysqli_error($conn);
+                    }
+                }
+            } else {
+                echo "Resolved";
+            }
+            echo "</td>";
+            echo "</tr>";
+        }
+        // close table tag
+        echo "</table>";
+    } else {
+        echo "No results found.";
     }
-    echo "</tr>";
 }
+if(isset($_POST['show_logout'])) {
+    require_once 'dbconfig.php';
 
-// Close the table
-echo "</table>";
-
-// Close the database connection
-mysqli_close($conn);
+    session_start();
+    session_destroy();
+    header('location: tpo.php?status=loggedout');
 }
-
-
-  ?>
+?>
 </body>
 </html>

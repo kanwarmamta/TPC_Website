@@ -1,39 +1,28 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 
-  <title>Admin Page</title>
-  <?php
-  $show_custom_query_form = false;
-  if(isset($_POST['show_sqldata'])) {
-    $show_custom_query_form = true;
-  }
-?>
+  <title>Placement trends</title>
+  
 
 
   <form method="post">
-		<input type="submit" class="my-button" name="show_data" value="Show Alumni Table">
-        <input type="submit" class="my-button" name="show_comdata" value="Show Company Table">
-        <input type="submit"class="my-button" name="show_stdata" value="Show Student Table">
-        <input type="submit" class="my-button" name="show_applydata" value="Applied Student Status ">
-        <input type="submit" class="my-button" name="show_selectdata" value="Selected Student Data">
-        <input type="submit" class="my-button" name="show_sqldata" value="Data acc. to SQL queries">
+		<input type="submit" class="my-button" name="show_placedyr" value="Placement Yearwise">
+    <input type="submit" class="my-button" name="show_placedbr" value="Placement Branchwise">
+        <input type="submit" class="my-button" name="show_com" value="Companies Visting">
+        <input type="submit" class="my-button" name="show_comno" value="No. of Companies each year">
+        <input type="submit"class="my-button" name="show_stdata" value="Company Hiring Trends"> 
+        <!-- //offers -->
+                <input type="submit" class="my-button" name="show_applydata" value="CTC Offered trends">
+        <!-- <input type="submit" class="my-button" name="show_selectdata" value="Selected Student Data">
+        <input type="submit" class="my-button" name="show_sqldata" value="Data acc. to SQL queries"> -->
         
 	</form>
   
   
-  <?php
-  if($show_custom_query_form) {
-?>
-  <form method="POST" action="">
-  <label for="custom_query">Enter Custom Query:</label><br>
-  <textarea id="custom_query" name="custom_query" rows="4" cols="50"></textarea><br>
-  <input type="submit" class="new-button" name="show_custom_query" value="Show Custom Query Result">
-</form>
-<?php
-  }
-?>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 <style>
 		body {
@@ -117,6 +106,10 @@
 		/* font-weight: bold;
 		text-transform: uppercase; */
 	}
+  #ctcChart {
+    width: 10px;
+    height: 10px;
+}
   .my-button {
   background-color: #fff;
   color: #191970;
@@ -138,25 +131,99 @@
 </style>
 </head>
 <body>
+<canvas id="ctcChart" width="10px" height="10px"></canvas>
   <?php
-  
-  if(isset($_POST['show_data'])) {
+  if(isset($_POST['show_placedyr'])) {
+   
     require_once 'dbconfig.php';
 
-    $sql = "SELECT * FROM alumni";
-    $result = mysqli_query($conn, $sql);
+    <?php
 
-    if (mysqli_num_rows($result) > 0) {
-      echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Phone</th><th>CPI</th><th>Company (Previous)</th><th>CTC (Previous)</th><th>Area of Interest (Previous)</th><th>Role (Previous)</th><th>Location (Previous)</th><th>Tenure (Previous)</th><th>Company (Current)</th><th>CTC (Current)</th><th>Area of Interest (Current)</th><th>Role (Current)</th><th>Location (Current)</th><th>Tenure (Current)</th></tr>";
-      while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["aRollno"]. "</td><td>" . $row["aName"]. "</td><td>" . $row["aEmail"]. "</td><td>" . $row["aPhone"]. "</td><td>" . $row["aCpi"]. "</td><td>" . $row["aCompP"]. "</td><td>" . $row["aCtcP"]. "</td><td>" . $row["aAreaIntP"]. "</td><td>" . $row["aRoleP"]. "</td><td>" . $row["aLocP"]. "</td><td>" . $row["aTenureP"]. "</td><td>" . $row["aCompC"]. "</td><td>" . $row["aCtcC"]. "</td><td>" . $row["aAreaIntC"]. "</td><td>" . $row["aRoleC"]. "</td><td>" . $row["aLocC"]. "</td><td>" . $row["aTenureC"]. "</td></tr>";
+include_once("includes/db_connect.php");
+
+?>
+
+<html>
+
+    <head>
+
+        <!--chart js -->
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    </head>
+
+    <body>
+
+         <?php
+
+      $chkresults = mysqli_query($conn,"SELECT MONTH(subscribed_on) AS subscriber_month, COUNT(*) AS subscriber_count FROM subscribers GROUP BY MONTH(subscribed_on)");    
+
+      ?>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['Bar']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+ 
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+
+           ['Month','Subscribers'],
+
+         <?php     
+
+        while($row=mysqli_fetch_assoc($chkresults)){            
+
+           echo "['".$row["subscriber_month"]."',".$row["subscriber_count"]."],";
+
+          }
+
+         ?>
+
+        ]);
+
+        var options = {
+
+          chart: {
+
+            title: '',          
+
+          },
+
+          bars: 'vertical',
+
+          vAxis: {format: 'decimal'},
+
+          height: 300,
+
+          colors: ['#d95f02']
+
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('bar-graph-location'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
       }
-      echo "</table>";
-    } else {
-      echo "0 results";
-    }
 
-    mysqli_close($conn);
+    </script>     
+
+        <!--location where bar graph will be displayed-->
+
+        <div id="bar-graph-location">
+
+        </div>
+
+    </body>
+
+</html>
+   
+
 }
 if(isset($_POST['show_comdata'])) {
     require_once 'dbconfig.php';
