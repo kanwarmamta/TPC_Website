@@ -19,6 +19,7 @@
         <input type="submit" class="my-button" name="show_applydata" value="Applied Student Status ">
         <input type="submit" class="my-button" name="show_selectdata" value="Selected Student Data">
         <input type="submit" class="my-button" name="show_sqldata" value="Data acc. to SQL queries">
+        <input type="submit" name="show_logout" value="Logout">
         
 	</form>
   
@@ -317,6 +318,13 @@ echo "</table>";
 
 // Close the database connection
 mysqli_close($conn);
+}
+if(isset($_POST['show_logout'])) {
+  require_once 'dbconfig.php';
+
+  session_start();
+  session_destroy();
+  header('location: tpo.php?status=loggedout');
 }
 
 
