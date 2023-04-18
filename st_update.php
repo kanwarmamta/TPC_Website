@@ -12,7 +12,45 @@ if(!isset($_SESSION["stRollno"]))
 
 // Connect to the database
 require_once 'dbconfig.php';
+ // Fetch the user's information from the database
+ $currstRollno= $_SESSION['stRollno'];
+ $currstName=$_SESSION['stName'];
+ $currstWebmail=$_SESSION['stWebmail'];
+ $currstPhone=$_SESSION['stPhone'];
+ $currstPwd=$_SESSION["stPassword"];
+ if (isset($_SESSION["stRollno"])) {
+ $sql = "SELECT * FROM student WHERE stRollno=\"{$_SESSION["stRollno"]}\"";
+ $result = $conn->query($sql); 
+ $user = $result->fetch_assoc();
+}else{
+    die("whaaaaaaaaaaaaaaaaat");
 
+    exit;
+}
+   
+      
+
+// while ($row = mysqli_fetch_assoc($result)) {
+           
+ 
+//  $currst10thPer=$row['st10thPer'];
+//  $currst12thPer=$row["st12thPer"];
+//  $currstcurrCpi=$row["stcurrCpi"];
+//  $currstAge=$row["stAge"];
+//  $currstSpec=$row["stSpec"];
+//  $currstInterest=$row["stInterest"];
+//  $currstBatch=$row["stBatch"];
+//  $currstPlaced=$row["stPlaced"];
+//  $currstPack=$row["stPack"];
+//  $currstRollno = $row['stRollno'];
+          
+
+//         } 
+ 
+//     }
+
+
+echo $currstRollno;
 // Handle form submission
 if(isset($_GET["submit"]))
 {
@@ -141,67 +179,67 @@ if(isset($_GET["submit"]))
                 <table>
                     <tr>
                         <td class="tdLabel"><label for="stRollno" class="label" style="font-size:20px; color:#191970;">Roll Number:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Roll Number" name="stRollno" value="" maxlength="8"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Roll Number" name="stRollno" value="<?php echo $currstRollno;?>" maxlength="8"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stName" class="label" style="font-size:20px; color:#191970;">Name:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Name" name="stName" value="" maxlength="50"></div></td>
+                        <td><div class="textbox"><input type="text"  name="stName" value="<?php echo $currstName;?>" maxlength="50"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stWebmail" class="label" style="font-size:20px; color:#191970;">Webmail:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Webmail" name="stWebmail" value="" maxlength="100"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Webmail" name="stWebmail" value="<?php echo $currstWebmail;?>" maxlength="100"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stPhone" class="label" style="font-size:20px; color:#191970;">Phone Number:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="stPhone" value="" maxlength="10"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="stPhone" value="<?php echo $currstPhone;?>" maxlength="10"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stPassword" class="label" style="font-size:20px; color:#191970;">Password:</label></td>
-                        <td><div class="textbox"><input type="password" placeholder="Password" name="stPassword" value="" maxlength="20"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Password" name="stPassword" value=<?= htmlspecialchars($user["stPassword"]) ?> maxlength="20"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="st10thPer" class="label" style="font-size:20px; color:#191970;">10th percentage:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="10th percentage" name="st10thPer" value="" step="0.01" maxlength="5"></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="10th percentage" name="st10thPer" value=<?= htmlspecialchars($user["st10thPer"]) ?> step="0.01" maxlength="5"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="st12thPer" class="label" style="font-size:20px; color:#191970;">12th percentage:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="12th percentage" name="st12thPer" value="" step="0.01" maxlength="5"></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="12th percentage" name="st12thPer" value=<?= htmlspecialchars($user["st12thPer"]) ?> step="0.01" maxlength="5"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stcurrCpi" class="label" style="font-size:20px; color:#191970;">Current CPI:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Current CPI" name="stCurrCpi" value="" step="0.01" maxlength="5"></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Current CPI" name="stcurrCpi" value=<?= htmlspecialchars($user["stcurrCpi"])?> step="0.01" maxlength="5"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stTranscript" class="label" style="font-size:20px; color:#191970;">Transcript Link:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Transcript Link" name="stTranscript" maxlength="50"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Transcript Link" name="stTranscript" value=<?= htmlspecialchars($user["stTranscript"]) ?> ></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stAge" class="label" style="font-size:20px; color:#191970;">Age:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Age" name="stAge"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Age" name="stAge" value=<?= htmlspecialchars($user["stAge"]) ?> ></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stSpec" class="label" style="font-size:20px; color:#191970;">Specialisation:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Specialisation" name="stSpec" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Specialisation" name="stSpec" value=<?= htmlspecialchars($user["stSpec"]) ?> maxlength="100"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stInterest" class="label" style="font-size:20px; color:#191970;">Interest:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="stInterest" name="stInterest" maxlength="50"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="stInterest" name="stInterest" value=<?= htmlspecialchars($user["stInterest"]) ?> maxlength="50"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stBatch" class="label" style="font-size:20px; color:#191970;">Batch:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="stBatch" value="" min="2023" max="2026">
+                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="stBatch" value=<?= htmlspecialchars($user["stBatch"]) ?> min="2023" max="2026">
                             <script>
                                 document.querySelector("input[type=number]")
                                 .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
@@ -212,12 +250,12 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="stPlaced" class="label" style="font-size:20px; color:#191970;">Placed(Y/N):</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Y/N" name="stPlaced" maxlength="1"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Y/N" name="stPlaced" value=<?= htmlspecialchars($user["stPlaced"]) ?> maxlength="1"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="stPack" class="label" style="font-size:20px; color:#191970;">Package recieved (in LPA):</label></td>
-                        <td><div class="textbox"><input type="number" name="stPack" placeholder="Package recieved (in LPA):"></td>
+                        <td><div class="textbox"><input type="number" name="stPack" value=<?= htmlspecialchars($user["stPack"]) ?> placeholder="Package recieved (in LPA):"></td>
                     </tr>
 
                 </table>
