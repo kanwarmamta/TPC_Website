@@ -71,17 +71,8 @@ if ($result)
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li> 
                     </ul>
                 </div>
             </div>
@@ -122,7 +113,7 @@ if ($result)
                     <input type="radio" id="confirm-no" name="confirm" value="no" checked>
                     <span class="check"></span>
                 </label>
-                <input class="button" type="submit" name="confirm" value="Confirm">
+                <input class="button" type="submit" value="Delete">
             </div>
         </form>
     </body>
