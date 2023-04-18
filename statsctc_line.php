@@ -38,7 +38,7 @@ echo "
         var options = {
             title: 'CTC Trends by Year',
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
             hAxis: {
                 title: 'Year',
                 viewWindow: {
@@ -55,3 +55,5 @@ echo "
 <div id='chart_div' style='width: 100%; height: 500px;'></div>
 ";
 ?>
+</body>
+</html>
