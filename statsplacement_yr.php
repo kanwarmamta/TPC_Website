@@ -35,7 +35,18 @@ $json_data = json_encode($data);
       legend: { position: 'top', maxLines: 3 },
       bar: { groupWidth: '20%' },
       isStacked: true,
-      colors: ['#191970', '#ca135e', '#21535b'] // Set different colors for each column
+      series: {
+        0: {color: '#191970'},
+        1: {color: '#ca135e'},
+        2: {color: '#21535b'}
+      },
+      vAxis: {
+      title: 'No. of Students'
+       
+      },
+      hAxis: {
+        title: 'Year'
+      }
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

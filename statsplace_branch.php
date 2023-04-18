@@ -25,7 +25,7 @@ foreach ($data as $row) {
 ?>
 <html>
 <head>
-    <title>Branch-wise Selected Students</title>
+    <title>Current Year Branch-wise Selected Students</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
@@ -65,8 +65,18 @@ foreach ($data as $row) {
                 legend: { position: 'top', maxLines: 3 },
                 bar: { groupWidth: '20%' },
                 isStacked: true,
-                colors: ['#191970', '#ca135e', '#21535b'] // Set different colors for each column
-            };
+                series: {
+        0: {color: '#191970'},
+        1: {color: '#ca135e'},
+        2: {color: '#21535b'}
+      },
+      vAxis: {
+      title: 'No. of Students'
+       
+      },
+      hAxis: {
+        title: 'Branch'
+      }            };
 
             var chart2 = new google.visualization.ColumnChart(document.getElementById('columnchart'));
             chart2.draw(data2, options2);
