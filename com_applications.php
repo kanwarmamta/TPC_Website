@@ -107,7 +107,7 @@ if (!$conn) {
 
 // retrieve company id of logged-in user
 $comId = $_SESSION["comId"];
-$sql = "SELECT COUNT(*) as total FROM student s INNER JOIN applied a ON s.stRollno = a.stRollno WHERE a.comId = '$comId'";
+$sql = "SELECT COUNT(*) AS total FROM student WHERE st10thPer > 80 AND st12thPer > 80 AND stcurrCpi > 8 AND stPack < 40;";
 
 $result = mysqli_query($conn, $sql);
 
