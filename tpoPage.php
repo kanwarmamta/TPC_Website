@@ -18,20 +18,7 @@
 </head>
 <body>
   <?php
-  if (isset($_POST['status']) && $_POST['status'] === 'Resolved' && isset($_POST['qid'])) {
-  require_once 'dbconfig.php';
-  $qid = mysqli_real_escape_string($conn, $_POST['qid']);
-  $sql = "UPDATE stqueries SET qStatus='Resolved' WHERE qid='$qid'";
-  if (mysqli_query($conn, $sql)) {
-    // Query was updated successfully
-    http_response_code(200);
-  } else {
-    // There was an error updating the query
-    http_response_code(500);
-  }
-} else {
-  http_response_code(400);
-}
+ 
  if(isset($_POST['show_stdata'])) {
     require_once 'dbconfig.php';
 
@@ -240,44 +227,46 @@ if(isset($_POST['show_contab']))
 if (isset($_POST['show_queries'])) {
     require_once 'dbconfig.php';
 
-    $sql = "SELECT * FROM stqueries";
-    
-    $result = mysqli_query($conn, $sql);
+  $sql = "SELECT * FROM stqueries";
+      
+  $result = mysqli_query($conn, $sql);
+  
+  if (mysqli_num_rows($result) > 0) {
+      echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Query raised</th><th>Query Status</th></tr>";
+       
+      // output data of each row
+      while($row = mysqli_fetch_assoc($result)) {
+          $stRollno = $row["stRollno"];
+          $qid = $row["qid"];
+          $qStatus = $row["qStatus"];
+          echo "<tr><td>" . $row["stRollno"]. "</td><td>" . $row["stName"]. "</td><td>" . $row["stWebmail"]. "</td><td>" . $row["stquery"]. "</td>";
+      
+          // display "Pending" button and update query status when clicked
+          echo "<td>";
+          if ($qStatus == "pending") {
+              echo "<button onclick=\"location.href='?qid=$qid'\">Pending</button>";
+              if (isset($_GET["qid"]) && $_GET["qid"] == $qid) {
+                  $updateSql = "UPDATE stqueries SET qStatus='Resolved' WHERE qid= $qid";
+                  $updateResult = mysqli_query($conn, $updateSql);
+                  if ($updateResult) {
+                      $qStatus = "Resolved";
+                      echo "<meta http-equiv='refresh' content='0'>";
+                  } else {
+                      echo "Error resolving the raised query " . mysqli_error($conn);
+                  }
+              }
+          } else {
+              echo "Resolved";
+          }
+          echo "</td>";
+          echo "</tr>";
+      }
+      // close table tag
+      echo "</table>";
+  } else {
+      echo "No results found.";
+  }
 
-    if (mysqli_num_rows($result) > 0) {
-        echo "<table><tr><th>Roll Number</th><th>Name</th><th>Email</th><th>Query raised</th><th>Query Status</th></tr>";
-
-        while($row = mysqli_fetch_assoc($result)) {
-            $stRollno = $row["stRollno"];
-            $qid = $row["qid"];
-            echo "<tr><td>" . $row["stRollno"]. "</td><td>" . $row["stName"]. "</td><td>" . $row["stWebmail"]. "</td><td>" . $row["stquery"]. "</td>";
-            
-            if ($row['qStatus'] == "pending") {
-                echo "<td><button onclick=\"if(confirm('Are you sure you want to mark this query as resolved?')){location.href='?resolve=$qid';}\">Pending</button></td>";
-            } else {
-                echo "<td>Resolved</td>";
-            }
-            
-            echo "</tr>";
-        }
-        
-        echo "</table>";
-        
-        if (isset($_GET["resolve"])) {
-            $resolve_id = $_GET["resolve"];
-            $sql = "DELETE FROM stqueries WHERE qid = '$resolve_id'";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('Query resolved successfully.');</script>";
-                echo "<meta http-equiv='refresh' content='0'>";
-            } else {
-                echo "Error resolving the raised query " . mysqli_error($conn);
-            }
-        }
-        
-    } else {
-        echo "No results found.";
-    }
 }
 if(isset($_POST['show_logout'])) {
     require_once 'dbconfig.php';
