@@ -1,2 +1,2 @@
 # DBMSProject
-## training ad placement cell dummy website
+## training and placement cell dummy website
