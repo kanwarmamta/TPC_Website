@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Tpo Page</title>
+  <link rel="stylesheet" href="tpoP.css">
   <form method="post">
 		<input type="submit" name="show_data" value="Show Alumni Table">
         <input type="submit" name="show_comdata" value="Show Company Table">
@@ -9,112 +10,11 @@
         <input type="submit" name="show_applydata" value="Applied Student Status ">
         <input type="submit" name="show_selectdata" value="Selected Student Data">
         <input type="submit" name="show_companywise" value="Selected Company Wise  Data">
+        <input type="submit" name="show_contab" value="Contact Us Queries">
         <input type="submit" name="show_queries" value="Student Raised Queries">
         <input type="submit" name="show_logout" value="Logout">
 	</form>
-    Welcome ADMIN!
 
-  <style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-color: #f5f5f5;
-		}
-
-	header {
-		background-color: #333;
-		color: #191970;
-		padding: 10px;
-		text-align: center;
-		margin-bottom: 0px;
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 16px;
-		/* font-weight: bold;
-		text-transform: uppercase; */
-	}
-
-	.container {
-		margin: 0 auto;
-		padding: 1px;
-		max-width: 50px;
-	}
-
-	form {
-		display: flex;
-		/* justify-content: space-between; */
-		align-items: center;
-		margin-bottom:0px;
-	}
-
-	form input[type="submit"] {
-		padding: 10px 20px;
-		font-size: 16px;
-		/* font-weight: bold; */
-		color: #191970;
-		background-color: #fff;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
-
-	form input[type="submit"]:hover {
-		background-color: #191970;
-    color: #fff;
-	}
-
-	textarea {
-		width: 100%;
-		padding: 10px;
-		border-radius: 5px;
-		border: 4px solid #191970;
-		resize: vertical;
-	}
-
-	table {
-		border-collapse: collapse;
-		width: 100%;
-		margin-bottom: 0px;
-	}
-
-	th, td {
-		padding: 10px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-	}
-  
-
-	/* tr:hover {
-      background-color: #f5f5f5;
-    } */
-	th {
-		background-color: #191970;
-		color: white;
-		/* font-weight: bold;
-		text-transform: uppercase; */
-	}
-  .my-button {
-  background-color: #fff;
-  color: #191970;
-}
-.new-button {
-  background-color: #fff; 
-  color: #191970; /* White text */
-  border: none; /* Remove borders */
-  padding: 10px 20px; /* Add padding */
-  text-align: center; /* Center text */
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make it a block element */
-  font-size: 16px; /* Increase font size */
-  cursor: pointer; /* Add cursor on hover */
-  border-radius: 4px; /* Add rounded corners */
-}
-
-
-</style>
 </head>
 <body>
   <?php
@@ -139,15 +39,14 @@
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>Password</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
+        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td>".$row['stRollno']."</td>
         <td>".$row['stName']."</td>
         <td>".$row['stWebmail']."</td>
         <td>".$row['stPhone']."</td>
-        <td>".$row['stPassword']."</td>
-        <td".$row['st10thPer']."</td>
+        <td>".$row['st10thPer']."</td>
         <td>".$row['st12thPer']."</td>
         <td>".$row['stcurrCpi']."</td>
         <td>".$row['stAge']."</td>
@@ -173,14 +72,13 @@ if(isset($_POST['show_comdata'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<div class='table-divider'></div><table><tr><th>Company ID</th><th>Company Name</th><th>Email</th><th>Phone</th><th>Password</th><th>Required Candidates</th><th>Minimum Qualification</th><th>10th Criteria</th><th>12th Criteria</th><th>CPI Criteria</th><th>Salary Package</th><th>Mode of Hiring (On/Off Campus)</th><th>Mode of Hiring (Full Time/Internship)</th><th>Year of Recruitment</th></tr>";
+        echo "<div class='table-divider'></div><table><tr><th>Company ID</th><th>Company Name</th><th>Email</th><th>Phone</th><th>Required Candidates</th><th>Minimum Qualification</th><th>10th Criteria</th><th>12th Criteria</th><th>CPI Criteria</th><th>Salary Package</th><th>Mode of Hiring (On/Off Campus)</th><th>Mode of Hiring (Full Time/Internship)</th><th>Year of Recruitment</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td>" . $row["comId"]. "</td>
         <td>" . $row["comName"]. "</td>
         <td>" . $row["comEmail"]. "</td>
         <td>" . $row["comPhone"]. "</td>
-        <td>" . $row["comPassword"]. "</td>
         <td>" . $row["reqCandi"]. "</td>
         <td>" . $row["minQual"]. "</td>
         <td>" . $row["10thCri"]. "</td>
@@ -200,7 +98,8 @@ if(isset($_POST['show_comdata'])) {
     mysqli_close($conn);
 }
 
-if(isset($_POST['show_data'])) {
+if(isset($_POST['show_data']))
+{
     require_once 'dbconfig.php';
 
     $sql = "SELECT * FROM alumni";
@@ -217,7 +116,7 @@ if(isset($_POST['show_data'])) {
     }
 
     mysqli_close($conn);
-}
+  }
 if(isset($_POST['show_applydata'])) {
     require_once 'dbconfig.php';
 
@@ -319,7 +218,25 @@ echo "<table><tr><th>Company Name</th><th>Package</th><th>Number of Selected Stu
 }
 
 }
+if(isset($_POST['show_contab']))
+{
+    require_once 'dbconfig.php';
 
+    $sql = "SELECT * FROM contactTable";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+      echo "<table><tr><th>Name</th><th>Email</th><th>Message</th><th>Subject</th></tr>";
+      while($row = mysqli_fetch_assoc($result)) {
+      echo "<tr><td>" . $row["fullname"]. "</td><td>" . $row["email"]. "</td><td>" . $row["message"]. "</td><td>" . $row["subject"]. "</td></tr>";
+      }
+      echo "</table>";
+    } else {
+      echo "0 results";
+    }
+
+    mysqli_close($conn);
+  }
 if (isset($_POST['show_queries'])) {
     require_once 'dbconfig.php';
 
