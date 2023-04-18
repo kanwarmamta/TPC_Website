@@ -37,17 +37,8 @@ ob_start();
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li>  
                     </ul>
                 </div>
                 </div>
@@ -143,7 +134,7 @@ $len=strlen(trim($aPwd));
 if(!filter_var($aEmail, FILTER_VALIDATE_EMAIL))
 {
     $result=false;
-    echo "Invalid email format.";
+    echo '<script>alert("Invalid email format.");</script>';
 }
 
 if($result){
@@ -155,12 +146,13 @@ if($result){
                         if (!isset($_GET['decl']) || $_GET['decl'] != 'accepted')
                         {
                                 $result = false;
-                                echo "You must accept the declaration to register.";
+                                echo '<script>alert("You must accept the declaration to edit profile.");</script>';
                         }
                         else
                         {
                                 $msg="New record created successfully.";
-                                echo $msg;
+                                //echo $msg;
+                                echo '<script>alert("New record created successfully.");</script>';
                                 $sql="INSERT INTO alumni(aRollno, aName, aEmail, aPhone, aPassword) values('$aRollno','$aName', '$aEmail', '$aPhone', '$aPwd')";
                                 $result=$conn->query($sql);
                                 if($msg=="New record created successfully.")
@@ -173,19 +165,20 @@ if($result){
                 else
                 {
                         $result=false;
-                        echo "Password must be atleast 8 characters long.";
+                        echo '<script>alert("Password should be at least 8 characters long."); </script>';
                 }
         }
         else
         {
             $result=false;
-            echo "Password must include at least one uppercase alphabet, one lowercase alphabet, one digit and special character.";
+            echo '<script>alert("Password must include at least one uppercase alphabet, one lowercase alphabet, one digit and special character."); </script>';
+
         }
     }
     else
     {
         $result=false;
-        echo "Passwords don't match.";
+        echo '<script>alert("Password does not match"); </script>';
     }
 }
 }

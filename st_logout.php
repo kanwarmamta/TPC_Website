@@ -1,6 +1,6 @@
 <html>
     <body>
-        <?php echo "Logged out successfully."; ?>
+        <?php echo '<script>alert("You have been logged out"); </script>'; ?>
     </body>
 </html>
 

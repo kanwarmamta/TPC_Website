@@ -1,69 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
-require_once 'dbconfig.php';
-if(!empty($_GET['status'])){
-    echo '<div>You have been logged out!</div>';
-}
-
-$err = "";
-$result=true;
-if (isset($_GET['login'])) {
-if ($result)
-{
-    if(empty(trim($_GET["stRollno"])) || empty(trim($_GET["stPassword"])))
-    {
-        $err = "Please enter Roll No. and password.";
-        echo $err;
-    }
-    else
-    {   
-       
-        $stRollno=$_GET["stRollno"];
-        $pwd=$_GET["stPassword"];
-        if(empty($err))
-        {
-            $sql = "SELECT stRollno, stName, stWebmail, stPhone, stPassword FROM student WHERE stRollno=?";
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, "s", $stRollno);
-            $param_username=$stRollno;
-    
-            if(mysqli_stmt_execute($stmt))
-            {
-                mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt)==1)
-                {
-                    mysqli_stmt_bind_result($stmt, $stRollno, $stName, $stWebmail, $stPhone, $stPassword);
-                    if(mysqli_stmt_fetch($stmt))
-                    {
-                       
-                        if($pwd==$stPassword)
-                        {
-                            // this means the password is corrct. Allow user to login
-                            session_start();
-                            $_SESSION["stRollno"] = $stRollno;
-                            $_SESSION["stName"] = $stName;
-                            $_SESSION["stWebmail"] = $stWebmail;
-                            $_SESSION["stPhone"] = $stPhone;
-                            $_SESSION["loggedin"] = true;
-                            //Redirect user to welcome page
-                            header("location: st_view.php");
-                        }
-                        else
-                        {
-                            echo "Password is incorrect.";
-                        }
-                    } 
-                }
-            }
-        }
-        else
-        {
-            echo "Credentials mismatch.";
-        }
-    }  
-}   
-}
+ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -100,17 +37,8 @@ if ($result)
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li> 
                     </ul>
                 </div>
             </div>
@@ -159,3 +87,73 @@ if ($result)
         </form>
     </body>
 </html>
+
+<?php
+error_reporting(0);
+require_once 'dbconfig.php';
+if(!empty($_GET['status'])){
+    //echo '<div>You have been logged out!</div>';
+    echo '<script>alert("You have been logged out"); </script>';
+}
+
+$err = "";
+$result=true;
+if (isset($_GET['login'])) {
+if ($result)
+{
+    if(empty(trim($_GET["stRollno"])) || empty(trim($_GET["stPassword"])))
+    {
+        $err = "Please enter Roll Number and password.";
+        //echo $err;
+        echo '<script>alert("Please enter Roll Number and password."); </script>';
+    }
+    else
+    {   
+       
+        $stRollno=$_GET["stRollno"];
+        $pwd=$_GET["stPassword"];
+        if(empty($err))
+        {
+            $sql = "SELECT stRollno, stName, stWebmail, stPhone, stPassword FROM student WHERE stRollno=?";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $stRollno);
+            $param_username=$stRollno;
+    
+            if(mysqli_stmt_execute($stmt))
+            {
+                mysqli_stmt_store_result($stmt);
+                if(mysqli_stmt_num_rows($stmt)==1)
+                {
+                    mysqli_stmt_bind_result($stmt, $stRollno, $stName, $stWebmail, $stPhone, $stPassword);
+                    if(mysqli_stmt_fetch($stmt))
+                    {
+                       
+                        if($pwd==$stPassword)
+                        {
+                            // this means the password is corrct. Allow user to login
+                            session_start();
+                            $_SESSION["stRollno"] = $stRollno;
+                            $_SESSION["stName"] = $stName;
+                            $_SESSION["stWebmail"] = $stWebmail;
+                            $_SESSION["stPhone"] = $stPhone;
+                            $_SESSION["loggedin"] = true;
+                            //Redirect user to welcome page
+                            header("location: st_view.php");
+                        }
+                        else
+                        {
+                            echo '<script>alert("Password is incorrect."); </script>';
+                        }
+                    } 
+                }
+            }
+        }
+        else
+        {
+            
+            echo '<script>alert("Credentials mismatch."); </script>';
+        }
+    }  
+}   
+}
+?>

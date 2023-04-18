@@ -37,17 +37,8 @@ ob_start();
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li>   
                     </ul>
                 </div>
             </div>
@@ -101,7 +92,7 @@ ob_start();
 error_reporting(0);
 require_once 'dbconfig.php';
 if(!empty($_GET['status'])){
-    echo '<div>You have been logged out!</div>';
+    echo '<script>alert("You have been logged out"); </script>';
 }
 
 $err = "";
@@ -112,7 +103,8 @@ if ($result)
     if(empty(trim($_GET["comId"])) || empty(trim($_GET["password"])))
     {
         $err = "Please enter company id and password.";
-        echo $err;
+        //echo $err;
+        echo '<script>alert("Please enter company id and password."); </script>';
     }
     else
     {
@@ -147,7 +139,7 @@ if ($result)
                         }
                         else
                         {
-                            echo "Password is incorrect.";
+                            echo '<script>alert("Password is incorrect."); </script>';
                         }
                     } 
                 }
@@ -155,7 +147,7 @@ if ($result)
         }
         else
         {
-            echo "Credentials mismatch.";
+            echo '<script>alert("Credentials mismatch."); </script>';
         }
     }  
 } 

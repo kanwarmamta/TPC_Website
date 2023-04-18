@@ -43,13 +43,15 @@ if(isset($_GET["submit"]))
 
     if(strlen(trim($comPwd))<8)
     {
-        echo "Password should be at least 8 characters long.";
+        echo '<script>alert("Password should be at least 8 characters long."); </script>';
+       
         exit;
     }
 
     if (!isset($_GET['decl']) || $_GET['decl'] != 'accepted')
     {
-        echo "You must accept the declaration to edit profile.";
+        echo '<script>alert("You must accept the declaration to edit profile.");</script>';
+       
     }
     else
     {
@@ -58,7 +60,8 @@ if(isset($_GET["submit"]))
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssssssssssssss", $comId, $comName, $comEmail, $comPhone, $comPwd, $reqCandi, $minQual, $Cri10, $Cri12, $cpiCri, $salpack, $mode, $mode1, $yearrec, $currcomId);
         $stmt->execute();
-        echo "Successfully Updated.";
+
+        echo '<script>alert("Successfully Updated."); window.location.href = "com_view.php";</script>';
         exit;
     }
 }
@@ -97,17 +100,8 @@ if(isset($_GET["submit"]))
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li>  
                     </ul>
                 </div>
             </div>

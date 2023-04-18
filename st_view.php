@@ -48,17 +48,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar" >
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Trends.php" class="dropbtn" style="color:#f5f5f5;">Placement Statistics</a></li>
-                        <li><div class="dropdown">
-                            <a href="#" class="dropbtn" style="color:#f5f5f5;">Login</a>
-                            <div class="dropdown-content">
-                                <a href="student.php">Student</a>
-                                <a href="company.php">Company</a>
-                                <a href="alumni.php">Alumni</a>
-                                <a href="admin.php">Admin</a>
-                                <a href="tpo.php">TPO</a>
-                            </div>
-                        </div></li>   
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li> 
                     </ul>
                 </div>
             </div>
@@ -89,6 +80,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
         <div class="box">
 			<h1>Welcome, <?php echo $_SESSION["stName"]?>! </h1>
 		    <input class="button" type="submit" name="e" value="Edit Profile" onClick="document.location.href='st_update.php'" >
+		    <input class="button" type="submit" name="c" value="CPI Calculator" onClick="document.location.href='CPI_Calculator.php'" >
 		    <input class="button" type="submit" name="el" value="Eligible" onClick="document.location.href='st_eligible.php'" >
             <input class="button" type="submit" name="q" value="Raise a Query" onClick="document.location.href='st_query.php'" >
 		    <input class="button" type="submit" name="d" value="Delete user" onClick="document.location.href='st_delete.php'" >

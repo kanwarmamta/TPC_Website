@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Company Applicants</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="navbar.css">
   <style>
 
     table {
@@ -19,10 +21,10 @@
       padding: 8px;
 
     }
-
+    
     th {
 
-      background-color: #4CAF50;
+      background-color: #191970;
 
       color: white;
 
@@ -30,14 +32,64 @@
 
     tr:nth-child(even) {
 
-      background-color: #f2f2f2;
+      background-color: #f5f5f5;
 
     }
 
   </style>
 </head>
 <body>
-  <h1>Company Applicants</h1>
+  <!--Navigation bar-->
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#191970;">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+        
+                    <div class="col-md-3 col-sm-6 col-xs-12 left" id ="left">  
+                        <img src="col_logo.png" width="100px" height="100px" id=logo alt="Logo image" style="margin-left: 0px;" />
+                    </div>
+                    <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;"><span> Training and Placement Cell, IIT Patna</span></a>
+                    <br>
+                    <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ</span></a>
+                    <!-- <a class="navbar-brand" href="dbwelcome.php" style="color:white;font-size:155%;font-family:KrutiDev;"><span> प्रशिक्षण एवं स्थानन प्रकोष्ठ, आईआईटी पटना</span></a> -->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar" >
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Trends.php" class="dropdown" style="color:#f5f5f5;">Placement Statistics</a></li>
+                        <li><a href="dbwelcome.php" class="dropdown" style="color:#f5f5f5;">Home</a></li> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--/ Navigation bar-->
+
+        <!-- Banner-->
+        <div class="banner">
+            <div class="bg-color">
+                <div class="container">
+                    <div class="row">
+                        <div class="banner-text text-center">
+                            <div class="text-border">
+                                <h2 class="text-dec">Learn To Code</h2>
+                            </div>
+                            <div class="intro-para text-center quote">
+                                <p><br><br></p>
+                            </div>
+                            <a href="#feature" class="mouse-hover">
+                                <div class="mouse"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Banner-->
+  <h1 style="color:#191970"><b>Company Applicants</b></h1>
 <?php
 session_start();
 
@@ -66,7 +118,7 @@ if (mysqli_num_rows($result) > 0) {
 
     $row = mysqli_fetch_assoc($result);
 
-    echo '<span style="font-size: 20px;">Number of eligible students : ' . $row['total'] . '</span>';
+    echo '<span style="font-size: 20px;color:#191970;">Number of eligible students : ' . $row['total'] . '</span>';
 
 
 
@@ -137,11 +189,8 @@ if (isset($_POST["select"])) {
       
             // send email to student
             
-
-
-
             $subject = 'Congratulations! You have been selected.';
-            $message = "Dear Student,\n\nCongratulations! We are pleased to inform you that you have been selected for the applied position in $comName.\nOffered CTC:$salpack LPA, you will be recieving offer letter from the recruiter's side soon.\nTill then we would request you to kindly update your student profile with this on TPC server as soon as possible.\n\nBest regards,\nTraining and Placement Cell \n IIT Patna";
+            $message = "Dear Student,\n\nCongratulations! We are pleased to inform you that you have been selected for the applied position in $comName.\nOffered CTC:$salpack LPA, you will be recieving offer letter from the recruiter's side soon.\nTill then we would request you to kindly update your student profile with this on tpc server as soon as possible.\n\nBest regards,\nTraining and Placement Cell \n IIT Patna";
             $headers = 'From: training.placement.iitp@company.com' . "\r\n" .
                 'Reply-To: training.placement.iitp@company.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();

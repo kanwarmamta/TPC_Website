@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-
+  
   <title>Admin Page</title>
   <?php
   $show_custom_query_form = false;
@@ -108,15 +107,9 @@
 		border-bottom: 1px solid #ddd;
 	}
   
-
-	/* tr:hover {
-      background-color: #f5f5f5;
-    } */
 	th {
 		background-color: #191970;
 		color: white;
-		/* font-weight: bold;
-		text-transform: uppercase; */
 	}
   .my-button {
   background-color: #fff;
@@ -166,14 +159,13 @@ if(isset($_POST['show_comdata'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<div class='table-divider'></div><table><tr><th>Company ID</th><th>Company Name</th><th>Email</th><th>Phone</th><th>Password</th><th>Required Candidates</th><th>Minimum Qualification</th><th>10th Criteria</th><th>12th Criteria</th><th>CPI Criteria</th><th>Salary Package</th><th>Mode of Hiring (On/Off Campus)</th><th>Mode of Hiring (Full Time/Internship)</th><th>Year of Recruitment</th></tr>";
+        echo "<div class='table-divider'></div><table><tr><th>Company ID</th><th>Company Name</th><th>Email</th><th>Phone</th><th>Required Candidates</th><th>Minimum Qualification</th><th>10th Criteria</th><th>12th Criteria</th><th>CPI Criteria</th><th>Salary Package</th><th>Mode of Hiring (On/Off Campus)</th><th>Mode of Hiring (Full Time/Internship)</th><th>Year of Recruitment</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td>" . $row["comId"]. "</td>
         <td>" . $row["comName"]. "</td>
         <td>" . $row["comEmail"]. "</td>
         <td>" . $row["comPhone"]. "</td>
-        <td>" . $row["comPassword"]. "</td>
         <td>" . $row["reqCandi"]. "</td>
         <td>" . $row["minQual"]. "</td>
         <td>" . $row["10thCri"]. "</td>
@@ -199,14 +191,13 @@ if(isset($_POST['show_stdata'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>Password</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
+        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
       while($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td>".$row['stRollno']."</td>
         <td>".$row['stName']."</td>
         <td>".$row['stWebmail']."</td>
         <td>".$row['stPhone']."</td>
-        <td>".$row['stPassword']."</td>
         <td".$row['st10thPer']."</td>
         <td>".$row['st12thPer']."</td>
         <td>".$row['stcurrCpi']."</td>
@@ -324,7 +315,7 @@ if(isset($_POST['show_logout'])) {
 
   session_start();
   session_destroy();
-  header('location: tpo.php?status=loggedout');
+  header('location: admin.php?status=loggedout');
 }
 
 
