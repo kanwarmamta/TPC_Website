@@ -23,7 +23,7 @@ require_once 'dbconfig.php';
  $result = $conn->query($sql); 
  $user = $result->fetch_assoc();
 }else{
-    die("whaaaaaaaaaaaaaaaaat");
+    die("please login");
 
     exit;
 }
