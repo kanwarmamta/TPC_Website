@@ -12,7 +12,21 @@ if(!isset($_SESSION["aRollno"]))
 
 // Connect to the database
 require_once 'dbconfig.php';
+// Fetch the user's information from the database
+$curraRollno= $_SESSION['aRollno'];
+$curraName=$_SESSION['aName'];
+$curraEmail=$_SESSION['aEmail'];
+$curraPhone=$_SESSION['aPhone'];
+$curraPwd=$_SESSION["aPassword"];
+if (isset($_SESSION["aRollno"])) {
+$sql = "SELECT * FROM alumni WHERE aRollno=\"{$_SESSION["aRollno"]}\"";
+$result = $conn->query($sql); 
+$user = $result->fetch_assoc();
+}else{
+   die("please login");
 
+   exit;
+}
 // Handle form submission
 if(isset($_GET["submit"]))
 {
@@ -138,37 +152,37 @@ if(isset($_GET["submit"]))
                 <table>
                     <tr>
                         <td class="tdLabel"><label for="aRollno" class="label" style="font-size:20px; color:#191970;">Roll Number:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Roll Number" name="aRollno" value="" maxlength="8"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Roll Number" name="aRollno" value="<?php echo $curraRollno;?>" maxlength="8"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aName" class="label" style="font-size:20px; color:#191970;">Name:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Name" name="aName" value="" maxlength="50"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Name" name="aName" value="<?php echo $curraName;?>" maxlength="50"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aEmail" class="label" style="font-size:20px; color:#191970;">E-mail:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="E-mail" name="aEmail" value="" maxlength="100"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="E-mail" name="aEmail" value="<?php echo $curraEmail;?>" maxlength="100"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aPhone" class="label" style="font-size:20px; color:#191970;">Phone Number:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="aPhone" value="" maxlength="10"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="aPhone" value="<?php echo $curraPhone?>" maxlength="10"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aPassword" class="label" style="font-size:20px; color:#191970;">Password:</label></td>
-                        <td><div class="textbox"><input type="password" placeholder="Password" name="aPassword" value="" maxlength="20"></div></td>
+                        <td><div class="textbox"><input type="password" placeholder="Password" name="aPassword" value=<?= htmlspecialchars($user["aPassword"]) ?> maxlength="20"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aCpi" class="label" style="font-size:20px; color:#191970;">CPI:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="CPI" name="aCpi" value="" step="0.01" maxlength="5"></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="CPI" name="aCpi" value=<?= htmlspecialchars($user["aCpi"]) ?> step="0.01" maxlength="5"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aBatch" class="label" style="font-size:20px; color:#191970;">Batch:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="aBatch" value="" min="2008" max="2022">
+                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="aBatch" value=<?= htmlspecialchars($user["aBatch"]) ?> min="2008" max="2022">
                             <script>
                                 document.querySelector("input[type=number]")
                                 .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
@@ -179,62 +193,62 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aCompP" class="label" style="font-size:20px; color:#191970;">First Company Joined:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Joined" name="aCompP" maxlength="50"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Joined" name="aCompP" value=<?= htmlspecialchars($user["aCompP"]) ?> maxlength="50"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aCtcP" class="label" style="font-size:20px; color:#191970;">First CTC:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="First CTC" name="aCtcP"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="First CTC" value=<?= htmlspecialchars($user["aCtcP"]) ?> name="aCtcP"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aAreaIntP" class="label" style="font-size:20px; color:#191970;">Area of interest</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntP" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntP" value=<?= htmlspecialchars($user["aAreaIntP"]) ?> maxlength="100"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aRoleP" class="label" style="font-size:20px; color:#191970;">First Company Role:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Role" name="aRoleP" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Role" name="aRoleP" value=<?= htmlspecialchars($user["aRoleP"]) ?> maxlength="100"/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aLocP" class="label" style="font-size:20px; color:#191970;">First Company Location:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Location" name="aLocP" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Location" name="aLocP" maxlength="100" value=<?= htmlspecialchars($user["aLocP"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aTenureP" class="label" style="font-size:20px; color:#191970;">First Company Tenure:</label></td>
-                        <td><div class="textbox"><input type="number" name="aTenureP" placeholder="First Company Tenure"></td>
+                        <td><div class="textbox"><input type="number" name="aTenureP" placeholder="First Company Tenure" value=<?= htmlspecialchars($user["aTenureP"]) ?>></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aCompC" class="label" style="font-size:20px; color:#191970;">Current Company:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company" name="aCompC" maxlength="50"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company" name="aCompC" maxlength="50" value=<?= htmlspecialchars($user["aCompC"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aCtcC" class="label" style="font-size:20px; color:#191970;">Current CTC:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Current CTC" name="aCtcC"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Current CTC" name="aCtcC" value=<?= htmlspecialchars($user["aCtcC"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aAreaIntC" class="label" style="font-size:20px; color:#191970;">Area of interest</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntC" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntC" maxlength="100" value=<?= htmlspecialchars($user["aAreaIntC"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aRoleC" class="label" style="font-size:20px; color:#191970;">Current Company Role:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company Role" name="aRoleC" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company Role" name="aRoleC" maxlength="100" value=<?= htmlspecialchars($user["aRoleC"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aLocC" class="label" style="font-size:20px; color:#191970;">Current Company Location:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company Location" name="aLocC" maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company Location" name="aLocC" maxlength="100" value=<?= htmlspecialchars($user["aLocC"]) ?>/></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aTenureC" class="label" style="font-size:20px; color:#191970;">Current Company Tenure:</label></td>
-                        <td><div class="textbox"><input type="number" name="aTenureC" placeholder="Current Company Tenure"></td>
+                        <td><div class="textbox"><input type="number" name="aTenureC" placeholder="Current Company Tenure" <?= htmlspecialchars($user["aTenureC"]) ?>></td>
                     </tr>
 
                 </table>
@@ -245,6 +259,114 @@ if(isset($_GET["submit"]))
 			    <input class="button" type="submit" name="submit" value="Update">
 		
             </div>
+        </form>
+    </body>
+</html>
+<?php
+session_start();
+error_reporting(0);
+$errors = array();
+
+// Check if the user is logged in
+if(!isset($_SESSION["aRollno"]))
+{
+    header('Location: alumni.php');
+    exit;
+}
+
+// Connect to the database
+require_once 'dbconfig.php';
+// Fetch the user's information from the database
+$curraRollno= $_SESSION['aRollno'];
+$curraName=$_SESSION['aName'];
+$curraWebmail=$_SESSION['aWebmail'];
+$curraPhone=$_SESSION['aPhone'];
+$curraPwd=$_SESSION["aPassword"];
+if (isset($_SESSION["aRollno"])) {
+$sql = "SELECT * FROM alumni WHERE aRollno=\"{$_SESSION["aRollno"]}\"";
+$result = $conn->query($sql); 
+$user = $result->fetch_assoc();
+}else{
+   die("please login");
+
+   exit;
+}
+// Handle form submission
+if(isset($_GET["submit"]))
+{
+    // Get the user's current information
+    $curraRollno= $_SESSION['aRollno'];
+    $sql = "SELECT * FROM alumni WHERE aRollno=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $curraRollno);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    
+    // Get the user's updated information
+    $aRollno=$_GET["aRollno"];
+    $aName=$_GET["aName"];
+    $aEmail=$_GET["aEmail"];
+    $aPhone=$_GET["aPhone"];
+    $aPwd=$_GET["aPassword"];
+    $aCpi=$_GET["aCpi"];
+    $aCompP=$_GET["aCompP"];
+    $aCtcP=$_GET["aCtcP"];
+    $aAreaIntP=$_GET["aAreaIntP"];
+    $aRoleP=$_GET["aRoleP"];
+    $aLocP=$_GET["aLocP"];
+    $aTenureP=$_GET["aTenureP"];
+    $aCompC=$_GET["aCompC"];
+    $aCtcC=$_GET["aCtcC"];
+    $aAreaIntC=$_GET["aAreaIntC"];
+    $aRoleC=$_GET["aRoleC"];
+    $aLocC=$_GET["aLocC"];
+    $aTenureC=$_GET["aTenureC"];
+
+    if(strlen(trim($aPwd))<8)
+    {
+        echo "Password should be at least 8 characters long.";
+        exit;
+    }
+    
+    // Update the user's information in the "users" table
+    $sql = "UPDATE alumni SET aRollno=?, aName=?, aEmail=?, aPhone=?, aPassword=?, aCpi=?, aCompP=?, aCtcP=?, aAreaIntP=?, aRoleP=?, aLocP=?, aTenureP=?,aCompC=?, aCtcC=?, aAreaIntC=?, aRoleC=?, aLocC=?, aTenureC=? WHERE aRollno=?";   //left here
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssssssssssssssss", $aRollno, $aName, $aEmail, $aPhone, $aPwd, $aCpi, $aCompP, $aCtcP, $aAreaIntP, $aRoleP, $aLocP, $aTenureP, $aCompC, $aCtcC, $aAreaIntC, $aRoleC, $aLocC, $aTenureC, $curraRollno);
+    $stmt->execute();
+    echo "Successfully Updated.";
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Information</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Edit Profile</h1>                
+        <form action="Alu_update.php" method="get">
+            Roll no : <input type="text" name="aRollno" maxlength="8"/><br>
+            Name: <input type="text" name="aName" maxlength="50"/><br>
+            E-mail: <input type="text" name="aEmail" maxlength="100"/><br>
+            Phone Number: <input type="text" name="aPhone" maxlength="10"/><br>
+            Password: <input type="password" name="aPassword" maxlength="20"/><br>
+            CPI: <input type="number" step="0.01" name="aCpi" maxlength="5"/><br>
+            First Company Joined: <input type="text" name="aCompP" maxlength="50"/><br>
+            First CTC: <input type="number" name="aCtcP"/><br>
+            Area of interest: <input type="text" name="aAreaIntP" maxlength="100"/><br>
+            First Company Role: <input type="text" name="aRoleP" maxlength="100"/><br>
+            First Company Location: <input type="text" name="aLocP" maxlength="100"/><br>  
+            First Company Tenure: <input type="number" name="aTenureP"/><br>  
+            Current Company : <input type="text" name="aCompC" maxlength="50"/><br>
+            Current CTC: <input type="number" name="aCtcC"/><br>
+            Area of interest: <input type="text" name="aAreaIntC" maxlength="100"/><br>
+            current Company Role: <input type="text" name="aRoleC" maxlength="100"/><br>
+            Current Company Location: <input type="text" name="aLocC" maxlength="100"/><br>  
+            Current Company  Tenure: <input type="number" name="aTenureC"/><br>  
+            <input type="submit" name="submit" value="Update" />
         </form>
     </body>
 </html>
