@@ -12,11 +12,9 @@
 
 
   <form method="post">
-        <input type="submit"class="my-button" name="show_stdata" value="Show Student Table">
-		
-        <input type="submit" class="my-button" name="show_comdata" value="Show Company Table">
-        <input type="submit" class="my-button" name="show_data" value="Show Alumni Table">
-      
+  <input type="submit"class="my-button" name="show_stdata" value="Show Student Table">
+  <input type="submit" class="my-button" name="show_comdata" value="Show Company Table">
+		<input type="submit" class="my-button" name="show_data" value="Show Alumni Table">
         <input type="submit" class="my-button" name="show_applydata" value="Applied Student Status ">
         <input type="submit" class="my-button" name="show_selectdata" value="Selected Student Data">
         <input type="submit" class="my-button" name="show_sqldata" value="Data acc. to SQL queries">
@@ -136,8 +134,7 @@
 <body>
   <?php
   
-  if(isset($_POST['show_data']))
-{
+  if(isset($_POST['show_data'])) {
     require_once 'dbconfig.php';
 
     $sql = "SELECT * FROM alumni";
@@ -154,7 +151,7 @@
     }
 
     mysqli_close($conn);
-  }
+}
 if(isset($_POST['show_comdata'])) {
     require_once 'dbconfig.php';
 
@@ -194,26 +191,25 @@ if(isset($_POST['show_stdata'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-      echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Transcript</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) {
-      echo "<tr>
-      <td>".$row['stRollno']."</td>
-      <td>".$row['stName']."</td>
-      <td>".$row['stWebmail']."</td>
-      <td>".$row['stPhone']."</td>
-      <td>".$row['st10thPer']."</td>
-      <td>".$row['st12thPer']."</td>
-      <td>".$row['stcurrCpi']."</td>
-      <td>".$row['stTranscript']."</td>
-      <td>".$row['stAge']."</td>
-      <td>".$row['stSpec']."</td>
-      <td>".$row['stInterest']."</td>
-      <td>".$row['stBatch']."</td>
-      <td>".$row['stPlaced']."</td>
-      <td>".$row['stPack']."</td>
-      </tr>";
-  
-  }
+        echo "<div class='table-divider'></div><table><tr><th>Roll No.</th><th>Name</th><th>Webmail</th><th>Phone</th><th>10th Percentage</th><th>12th Percentage</th><th>Current CPI</th><th>Age</th><th>Specialization</th><th>Interests</th><th>Batch</th><th>Placed</th><th>Package</th></tr>";
+      while($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+        <td>".$row['stRollno']."</td>
+        <td>".$row['stName']."</td>
+        <td>".$row['stWebmail']."</td>
+        <td>".$row['stPhone']."</td>
+        <td".$row['st10thPer']."</td>
+        <td>".$row['st12thPer']."</td>
+        <td>".$row['stcurrCpi']."</td>
+        <td>".$row['stAge']."</td>
+        <td>".$row['stSpec']."</td>
+        <td>".$row['stInterest']."</td>
+        <td>".$row['stBatch']."</td>
+        <td>".$row['stPlaced']."</td>
+        <td>".$row['stPack']."</td>
+        </tr>";
+    
+    }
       echo "</table>";
     } else {
       echo "0 results";

@@ -1,14 +1,14 @@
 <?php
 require_once 'dbconfig.php';
 
-$sql = "SELECT SUBSTR(aRollno, 5, 2) AS branch_code, COUNT(*) AS student_count FROM alumni GROUP BY branch_code";
+$sql = "SELECT CONCAT('20', SUBSTR(aRollno, 1, 2) + 4) AS passout_year, COUNT(*) AS student_count FROM alumni where aCompP='TCS' GROUP BY passout_year";
 
 $result = $conn->query($sql);
 
 $data = array();
-$data[] = array('branch_code', 'student_count');
+$data[] = array('passout_year', 'student_count');
 while($row = $result->fetch_assoc()) {
-    $data[] = array($row["branch_code"], (int)$row["student_count"]);
+    $data[] = array($row["passout_year"], (int)$row["student_count"]);
 }
 
 $conn->close();
@@ -18,7 +18,7 @@ $json_data = json_encode($data);
 ?>
 <html>
   <head>
-    <title>Branch-wise Comparison</title>
+    <title>TCS Trends</title>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
@@ -45,7 +45,7 @@ $json_data = json_encode($data);
        
       },
       hAxis: {
-        title: 'Branch'
+        title: 'Year'
       }
     };
 
@@ -62,7 +62,7 @@ $json_data = json_encode($data);
     </style>
 </head>
 <body>
-            <h1 style="font-size: 40px; border-bottom: 4px solid #191970; margin-bottom: 10px; padding: 13px; color:#191970; text-align: center;">Branch-wise Comparison</h1>
-            <div id="chart_div" style="width: 50%; height: 500px; margin: 0 auto 0 200px;"></div>
-</body>
-</html>
+            <h1 style="font-size: 40px; border-bottom: 4px solid #191970; margin-bottom: 10px; padding: 13px; color:#191970; text-align: center;">TCS Trends</h1>
+<div id="chart_div" style="width: 50%; height: 500px; margin: 0 auto 0 200px;"></div>
+    </body>
+    </html>

@@ -177,7 +177,7 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aCpi" class="label" style="font-size:20px; color:#191970;">CPI:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="CPI" name="aCpi" value=<?= htmlspecialchars($user["aCpi"]) ?> step="0.01" maxlength="5"></div></td>
+                        <td><div class="textbox"><input type="number" step="0.01" placeholder="CPI" name="aCpi" value=<?= htmlspecialchars($user["aCpi"]) ?> step="0.01" maxlength="5"></div></td>
                     </tr>
 
                     <tr>
@@ -193,7 +193,7 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aCompP" class="label" style="font-size:20px; color:#191970;">First Company Joined:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Joined" name="aCompP" value=<?= htmlspecialchars($user["aCompP"]) ?> maxlength="50"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Joined" name="aCompP" maxlength="50" value=<?= htmlspecialchars($user["aCompP"]) ?> ></div></td>
                     </tr>
 
                     <tr>
@@ -203,12 +203,12 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aAreaIntP" class="label" style="font-size:20px; color:#191970;">Area of interest</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntP" value=<?= htmlspecialchars($user["aAreaIntP"]) ?> maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntP" maxlength="100" value=<?= htmlspecialchars($user["aAreaIntP"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aRoleP" class="label" style="font-size:20px; color:#191970;">First Company Role:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Role" name="aRoleP" value=<?= htmlspecialchars($user["aRoleP"]) ?> maxlength="100"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Role" name="aRoleP" maxlength="100" value=<?= htmlspecialchars($user["aRoleP"]) ?> ></div></td>
                     </tr>
 
                     <tr>

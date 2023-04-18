@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+require_once 'dbconfig.php';
 $stRollno=$_SESSION["stRollno"];
 $_SESSION["stRollnonew"] = $stRollno;
 $stWebmail=$_SESSION["stWebmail"];
@@ -13,8 +14,34 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
 {
     header("location: student.php");
 }
+
+
+if(isset($_POST['submit_query'])) {
+    // Get the input data from the form
+    $stquery = $_POST['stquery'];
+
+    // Prepare the query
+    $stmt = $conn->prepare("INSERT INTO stqueries (stRollno, stName, stWebmail, stquery, qStatus) VALUES (?, ?, ?, ?, ?)");
+
+    // Bind the parameters to the prepared statement
+    $stmt->bind_param("sssss", $stRollno, $stName, $stWebmail, $stquery, $qStatus);
+
+    // Set the status to "pending"
+    $qStatus = "pending";
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "<script>alert('Query submitted successfully.');</script>";
+    } else {
+        echo "<script>alert('Error submitting query: " . $stmt->error . "');</script>";
+    }
+
+    // Close the statement and the database connection
+    $stmt->close();
+    $conn->close();
+}
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
     <head>
         <title>Welcome</title>
@@ -82,9 +109,32 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
 		    <input class="button" type="submit" name="e" value="Edit Profile" onClick="document.location.href='st_update.php'" >
 		    <input class="button" type="submit" name="c" value="CPI Calculator" onClick="document.location.href='CPI_Calculator.php'" >
 		    <input class="button" type="submit" name="el" value="Eligible" onClick="document.location.href='st_eligible.php'" >
-            <input class="button" type="submit" name="q" value="Raise a Query" onClick="document.location.href='st_query.php'" >
+            <input type="button" value="Raise a Query" class="button" onClick="showPrompt()" >
 		    <input class="button" type="submit" name="d" value="Delete user" onClick="document.location.href='st_delete.php'" >
 		    <input class="button" type="submit" name="l" value="Logout" onClick="document.location.href='st_logout.php'" >
         </div>
-    </body>
+    <script>
+        function storeQuery(stquery) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Query saved successfully");
+                }
+            };
+            xhr.open("POST", "st_view.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("submit_query=1&stquery=" + stquery);
+        }
+
+        function showPrompt() {
+            var stquery = window.prompt("Enter your query:");
+            if (stquery != null && stquery.trim() !== "") {
+        // Call a function to store the query in the table
+        storeQuery(stquery);
+    } else {
+        alert("Error: Query cannot be empty.");
+    }
+        }
+    </script>
+</body>
 </html>

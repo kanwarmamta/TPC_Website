@@ -50,7 +50,7 @@ require_once 'dbconfig.php';
 //     }
 
 
-echo $currstRollno;
+
 // Handle form submission
 if(isset($_GET["submit"]))
 {
@@ -95,7 +95,7 @@ if(isset($_GET["submit"]))
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssssssssssss", $stRollno, $stName, $stWebmail, $stPhone, $stPwd, $st10thPer, $st12thPer, $stcurrCpi, $stTranscript, $stAge, $stSpec, $stInterest, $stBatch, $stPlaced, $stPack, $currstRollno);
         $stmt->execute();
-        echo "Successfully Updated.";
+        echo '<script>alert("Successfully Updated."); window.location.href = "st_view.php";</script>';
         exit;
     }
 }

@@ -1,4 +1,4 @@
-<<html>
+<html>
     <body>
         <?php echo '<script>alert("You have been logged out"); </script>'; ?>
     </body>

@@ -81,7 +81,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
         <div class="box">
 			<h1>Welcome, <?php echo $_SESSION["aName"]?>! </h1>
 		    <input class="button" type="submit" name="e" value="Edit Profile" onClick="document.location.href='Alu_update.php'" >
-		    <!-- <input class="button" type="submit" name="d" value="Delete user" onClick="document.location.href='Alu_delete.php'" > -->
+		    <input class="button" type="submit" name="d" value="Delete user" onClick="document.location.href='Alu_delete.php'" >
 		    <input class="button" type="submit" name="l" value="Logout" onClick="document.location.href='Alu_logout.php'"  >
         </div>
     </body>

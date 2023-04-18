@@ -4,15 +4,15 @@
   <title>Tpo Page</title>
   <link rel="stylesheet" href="tpoP.css">
   <form method="post">
-  <input type="submit" name="show_stdata" value="Show Student Table">
-  <input type="submit" name="show_comdata" value="Show Company Table">
-  <input type="submit" name="show_data" value="Show Alumni Table">
+  <input type="submit" name="show_stdata" value="Student Table">
+  <input type="submit" name="show_comdata" value="Company Table">
+  <input type="submit" name="show_data" value="Alumni Table">
         
         <input type="submit" name="show_applydata" value="Applied Student Status ">
         <input type="submit" name="show_selectdata" value="Selected Student Data">
-        <input type="submit" name="show_companywise" value="Selected Company Wise  Data">
+        <input type="submit" name="show_companywise" value="Company Wise  Data">
         <input type="submit" name="show_contab" value="Contact Us Queries">
-        <input type="submit" name="show_queries" value="Student Raised Queries">
+        <input type="submit" name="show_queries" value="Student Queries">
         <input type="submit" name="show_logout" value="Logout">
 	</form>
 

@@ -19,8 +19,9 @@
 	<input class="button" type="submit" value="Companies Visiting" onClick="document.location.href='statscom_visit.php'" >
 	<input class="button" type="submit" value="Current Placement Branchwise" onClick="document.location.href='statsplace_branch.php'" >
 	<input class="button" type="submit" value="General CTC Trend" onClick="document.location.href='statsctc_line.php'" >
+	<input class="button" type="submit" value="TCS Trends" onClick="document.location.href='stats_tcs.php'" >
 </div>
-	
+
 </body>
 </html>
 <style>
@@ -118,4 +119,3 @@
 </style>
 </head>
 </html>
-
