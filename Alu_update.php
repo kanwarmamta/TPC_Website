@@ -172,7 +172,7 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aPassword" class="label" style="font-size:20px; color:#191970;">Password:</label></td>
-                        <td><div class="textbox"><input type="password" placeholder="Password" name="aPassword" value=<?= htmlspecialchars($user["aPassword"]) ?> maxlength="20"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Password" name="aPassword" value=<?= htmlspecialchars($user["aPassword"]) ?> maxlength="20"></div></td>
                     </tr>
 
                     <tr>
@@ -213,7 +213,7 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aLocP" class="label" style="font-size:20px; color:#191970;">First Company Location:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="First Company Location" name="aLocP" maxlength="100" value=<?= htmlspecialchars($user["aLocP"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="First Company Location" name="aLocP" maxlength="100" value=<?= htmlspecialchars($user["aLocP"]) ?>></div></td>
                     </tr>
 
                     <tr>
@@ -223,32 +223,32 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="aCompC" class="label" style="font-size:20px; color:#191970;">Current Company:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company" name="aCompC" maxlength="50" value=<?= htmlspecialchars($user["aCompC"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company" name="aCompC" maxlength="50" value=<?= htmlspecialchars($user["aCompC"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aCtcC" class="label" style="font-size:20px; color:#191970;">Current CTC:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Current CTC" name="aCtcC" value=<?= htmlspecialchars($user["aCtcC"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Current CTC" name="aCtcC" value=<?= htmlspecialchars($user["aCtcC"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aAreaIntC" class="label" style="font-size:20px; color:#191970;">Area of interest</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntC" maxlength="100" value=<?= htmlspecialchars($user["aAreaIntC"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Area of interest" name="aAreaIntC" maxlength="100" value=<?= htmlspecialchars($user["aAreaIntC"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aRoleC" class="label" style="font-size:20px; color:#191970;">Current Company Role:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company Role" name="aRoleC" maxlength="100" value=<?= htmlspecialchars($user["aRoleC"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company Role" name="aRoleC" maxlength="100" value=<?= htmlspecialchars($user["aRoleC"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aLocC" class="label" style="font-size:20px; color:#191970;">Current Company Location:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Current Company Location" name="aLocC" maxlength="100" value=<?= htmlspecialchars($user["aLocC"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Current Company Location" name="aLocC" maxlength="100" value=<?= htmlspecialchars($user["aLocC"]) ?>></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="aTenureC" class="label" style="font-size:20px; color:#191970;">Current Company Tenure:</label></td>
-                        <td><div class="textbox"><input type="number" name="aTenureC" placeholder="Current Company Tenure" <?= htmlspecialchars($user["aTenureC"]) ?>></td>
+                        <td><div class="textbox"><input type="number" name="aTenureC" placeholder="Current Company Tenure" value=<?= htmlspecialchars($user["aTenureC"]) ?>></td>
                     </tr>
 
                 </table>

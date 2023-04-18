@@ -169,7 +169,7 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="comPassword" class="label" style="font-size:20px; color:#191970;">Password:</label></td>
-                        <td><div class="textbox"><input type="password" placeholder="Password" name="comPassword" value=<?= htmlspecialchars($user["comPassword"]) ?> maxlength="20"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Password" name="comPassword" value=<?= htmlspecialchars($user["comPassword"]) ?> maxlength="20"></div></td>
                     </tr>
 
                     <tr>
@@ -190,27 +190,27 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="10thCri" class="label" style="font-size:20px; color:#191970;">Grade 10 Marks Criteria:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Grade 10 Marks Criteria" step="0.01" name="10thCri" maxlength="5" value=<?= htmlspecialchars($user["10thCri"]) ?> /></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Grade 10 Marks Criteria" step="0.01" name="10thCri" maxlength="5" value=<?= htmlspecialchars($user["10thCri"]) ?> ></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="12thCri" class="label" style="font-size:20px; color:#191970;">Grade 12 Marks Criteria</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Grade 12 Marks Criteria" step="0.01" name="12thCri" maxlength="5" value=<?= htmlspecialchars($user["12thCri"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Grade 12 Marks Criteria" step="0.01" name="12thCri" maxlength="5" value=<?= htmlspecialchars($user["12thCri"]) ?>></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="cpiCri" class="label" style="font-size:20px; color:#191970;">CPI Criteria:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="CPI Criteria" step="0.01" name="cpiCri" maxlength="5" value=<?= htmlspecialchars($user["cpiCri"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="CPI Criteria" step="0.01" name="cpiCri" maxlength="5" value=<?= htmlspecialchars($user["cpiCri"]) ?>></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="salpack" class="label" style="font-size:20px; color:#191970;">Salary Package (in LPA):</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Salary Package" name="salpack" value=<?= htmlspecialchars($user["salpack"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Salary Package" name="salpack" value=<?= htmlspecialchars($user["salpack"]) ?>></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="mode" class="label" style="font-size:20px; color:#191970;">Mode of Interview [On/Off Campus]:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="On Campus" name="mode" maxlength="10" value=<?= htmlspecialchars($user["mode"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="On Campus" name="mode" maxlength="10" value=<?= htmlspecialchars($user["mode"]) ?>></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="mode1" class="label" style="font-size:20px; color:#191970;">Mode of Interview [Written/Interview]:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Interview" name="mode1" maxlength="9" value=<?= htmlspecialchars($user["mode1"]) ?>/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Interview" name="mode1" maxlength="9" value=<?= htmlspecialchars($user["mode1"]) ?>></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="yearrec" class="label" style="font-size:20px; color:#191970;">Year since recruiting from IIT Patna:</label></td>
