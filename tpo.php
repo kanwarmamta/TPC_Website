@@ -1,15 +1,10 @@
-<?php
-session_start();
-ob_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="Login.css">
@@ -92,8 +87,7 @@ ob_start();
 // Connect to the database
 require_once 'dbconfig.php';
 if(!empty($_GET['status'])){
-    //echo '<div>You have been logged out!</div>';
-    echo '<script>alert("You have been logged out"); </script>';
+    echo '<div>You have been logged out!</div>';
 }
 function test_input($data) {
 	

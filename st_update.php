@@ -50,7 +50,7 @@ require_once 'dbconfig.php';
 //     }
 
 
-
+echo $currstRollno;
 // Handle form submission
 if(isset($_GET["submit"]))
 {

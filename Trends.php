@@ -19,13 +19,10 @@
 	<input class="button" type="submit" value="Companies Visiting" onClick="document.location.href='statscom_visit.php'" >
 	<input class="button" type="submit" value="Current Placement Branchwise" onClick="document.location.href='statsplace_branch.php'" >
 	<input class="button" type="submit" value="General CTC Trend" onClick="document.location.href='statsctc_line.php'" >
-
 </div>
 	
-
 </body>
 </html>
-
 <style>
 		body {
 			font-family: Arial, sans-serif;
@@ -120,5 +117,5 @@
 }
 </style>
 </head>
-
 </html>
+
