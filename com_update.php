@@ -12,7 +12,20 @@ if(!isset($_SESSION["comId"]))
 
 // Connect to the database
 require_once 'dbconfig.php';
+$currcomId= $_SESSION['comId'];
+$currcomName=$_SESSION['comName'];
+$currcomEmail=$_SESSION['comEmail'];
+$currcomPhone=$_SESSION['comPhone'];
+$currcomPassword=$_SESSION["comPassword"];
+if (isset($_SESSION["comId"])) {
+$sql = "SELECT * FROM company WHERE comId=\"{$_SESSION["comId"]}\"";
+$result = $conn->query($sql); 
+$user = $result->fetch_assoc();
+}else{
+   die("please login");
 
+   exit;
+}
 // Handle form submission
 if(isset($_GET["submit"]))
 {
@@ -136,37 +149,37 @@ if(isset($_GET["submit"]))
                 <table>
                     <tr>
                         <td class="tdLabel"><label for="comId" class="label" style="font-size:20px; color:#191970;">Company Id:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Company ID" name="comId" value="" maxlength="6"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Company ID" name="comId" value="<?php echo $currcomId;?>" maxlength="6"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="comName" class="label" style="font-size:20px; color:#191970;">Company Name:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Company Name" name="comName" value="" maxlength="50"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Company Name" name="comName" value="<?php echo $currcomName;?>" maxlength="50"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="comEmail" class="label" style="font-size:20px; color:#191970;">E-mail:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="E-mail" name="comEmail" value="" maxlength="100"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="E-mail" name="comEmail" value="<?php echo $currcomEmail;?>" maxlength="100"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="comPhone" class="label" style="font-size:20px; color:#191970;">Phone Number:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="comPhone" value="" maxlength="10"></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Phone Number" name="comPhone" value="<?php echo $currcomPhone;?>" maxlength="10"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="comPassword" class="label" style="font-size:20px; color:#191970;">Password:</label></td>
-                        <td><div class="textbox"><input type="password" placeholder="Password" name="comPassword" value="" maxlength="20"></div></td>
+                        <td><div class="textbox"><input type="password" placeholder="Password" name="comPassword" value=<?= htmlspecialchars($user["comPassword"]) ?> maxlength="20"></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="reqCandi" class="label" style="font-size:20px; color:#191970;">Required Candidates:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Required Candidates" name="reqCandi" value="" ></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Required Candidates" name="reqCandi" value=<?= htmlspecialchars($user["reqCandi"]) ?> ></div></td>
                     </tr>
 
                     <tr>
                         <td class="tdLabel"><label for="minQual" class="label" style="font-size:20px; color:#191970;">Graduating Year:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="minQual" value="" min="2023" max="2026">
+                        <td><div class="textbox"><input type="number" placeholder="YYYY" name="minQual" value=<?= htmlspecialchars($user["minQual"]) ?> min="2023" max="2026">
                             <script>
                                 document.querySelector("input[type=number]")
                                 .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
@@ -177,31 +190,31 @@ if(isset($_GET["submit"]))
 
                     <tr>
                         <td class="tdLabel"><label for="10thCri" class="label" style="font-size:20px; color:#191970;">Grade 10 Marks Criteria:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Grade 10 Marks Criteria" step="0.01" name="10thCri" maxlength="5"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Grade 10 Marks Criteria" step="0.01" name="10thCri" maxlength="5" value=<?= htmlspecialchars($user["10thCri"]) ?> /></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="12thCri" class="label" style="font-size:20px; color:#191970;">Grade 12 Marks Criteria</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Grade 12 Marks Criteria" step="0.01" name="12thCri" maxlength="5"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Grade 12 Marks Criteria" step="0.01" name="12thCri" maxlength="5" value=<?= htmlspecialchars($user["12thCri"]) ?>/></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="cpiCri" class="label" style="font-size:20px; color:#191970;">CPI Criteria:</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="CPI Criteria" step="0.01" name="cpiCri" maxlength="5"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="CPI Criteria" step="0.01" name="cpiCri" maxlength="5" value=<?= htmlspecialchars($user["cpiCri"]) ?>/></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="salpack" class="label" style="font-size:20px; color:#191970;">Salary Package (in LPA):</label></td>
-                        <td><div class="textbox"><input type="number" placeholder="Salary Package" name="salpack"/></div></td>
+                        <td><div class="textbox"><input type="number" placeholder="Salary Package" name="salpack" value=<?= htmlspecialchars($user["salpack"]) ?>/></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="mode" class="label" style="font-size:20px; color:#191970;">Mode of Interview [On/Off Campus]:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="On Campus" name="mode" maxlength="10"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="On Campus" name="mode" maxlength="10" value=<?= htmlspecialchars($user["mode"]) ?>/></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="mode1" class="label" style="font-size:20px; color:#191970;">Mode of Interview [Written/Interview]:</label></td>
-                        <td><div class="textbox"><input type="text" placeholder="Interview" name="mode1" maxlength="9"/></div></td>
+                        <td><div class="textbox"><input type="text" placeholder="Interview" name="mode1" maxlength="9" value=<?= htmlspecialchars($user["mode1"]) ?>/></div></td>
                     </tr>
                     <tr>
                         <td class="tdLabel"><label for="yearrec" class="label" style="font-size:20px; color:#191970;">Year since recruiting from IIT Patna:</label></td>
-                        <td><div class="textbox"><input type="number" name="yearrec" placeholder="YYYY" min="2008" max="2023">
+                        <td><div class="textbox"><input type="number" name="yearrec" placeholder="YYYY" min="2008" max="2023" value=<?= htmlspecialchars($user["yearrec"]) ?>>
                             <script>
                                 document.querySelector("input[type=number]")
                                 .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
