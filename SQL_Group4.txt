@@ -329,8 +329,8 @@ mysql> desc contactTable;
 mysql> create table stqueries(
     -> qid int(11) primary key,
     -> stRollno varchar(8),
-    -> stName varchar(100),
-    -> stWebmail varchar(50),
+    -> stName varchar(50),
+    -> stWebmail varchar(100),
     -> stquery varchar(5000),
-    -> qstatus varchar(20));
+    -> qStatus varchar(20));
 Query OK, 0 rows affected, 1 warning (0.02 sec)
