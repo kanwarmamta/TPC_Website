@@ -1,0 +1,336 @@
+Source Code Link:https://github.com/NishitaLath/DBMSProject
+
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database dbpro;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use dbpro;
+Database changed
+mysql> create table company(
+    -> comId char(6) primary key,
+    -> comName varchar(50),
+    -> comEmail varchar(100),
+    -> comPhone int(10),
+    -> comPassword varchar(20),
+    -> reqCandi int,
+    -> minQual year,
+    -> markcri int,
+    -> salpack int,
+    -> mode varchar(7),
+    -> mode1 varchar(9),
+    -> yearrec year);
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc company;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| comId       | char(6)      | NO   | PRI | NULL    |       |
+| comName     | varchar(50)  | YES  |     | NULL    |       |
+| comEmail    | varchar(100) | YES  |     | NULL    |       |
+| comPhone    | int          | YES  |     | NULL    |       |
+| comPassword | varchar(20)  | YES  |     | NULL    |       |
+| reqCandi    | int          | YES  |     | NULL    |       |
+| minQual     | year         | YES  |     | NULL    |       |
+| markcri     | int          | YES  |     | NULL    |       |
+| salpack     | int          | YES  |     | NULL    |       |
+| mode        | varchar(7)   | YES  |     | NULL    |       |
+| mode1       | varchar(9)   | YES  |     | NULL    |       |
+| yearrec     | year         | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+12 rows in set (0.03 sec)
+
+mysql> create table alumni(
+    -> aRollno char(8),
+    -> aName varchar(50),
+    -> aEmail varchar(100),
+    -> aPhone int(10),
+    -> aCpi float(5,2),
+    -> aCompP varchar(50),
+    -> aCtcP int,
+    -> aAreaIntP varchar(100),
+    -> aRoleP varchar(100),
+    -> aLocP varchar(100),
+    -> aTenureP year,
+    -> aCompC varchar(50),
+    -> aCtcC int,
+    -> aAreaIntC varchar(100),
+    -> aRoleC varchar(100),
+    -> aLocC varchar(100),
+    -> aTenureC year);
+Query OK, 0 rows affected, 2 warnings (0.01 sec)
+
+mysql> desc alumni;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| aRollno   | char(8)      | YES  |     | NULL    |       |
+| aName     | varchar(50)  | YES  |     | NULL    |       |
+| aEmail    | varchar(100) | YES  |     | NULL    |       |
+| aPhone    | int          | YES  |     | NULL    |       |
+| aCpi      | float(5,2)   | YES  |     | NULL    |       |
+| aCompP    | varchar(50)  | YES  |     | NULL    |       |
+| aCtcP     | int          | YES  |     | NULL    |       |
+| aAreaIntP | varchar(100) | YES  |     | NULL    |       |
+| aRoleP    | varchar(100) | YES  |     | NULL    |       |
+| aLocP     | varchar(100) | YES  |     | NULL    |       |
+| aTenureP  | year         | YES  |     | NULL    |       |
+| aCompC    | varchar(50)  | YES  |     | NULL    |       |
+| aCtcC     | int          | YES  |     | NULL    |       |
+| aAreaIntC | varchar(100) | YES  |     | NULL    |       |
+| aRoleC    | varchar(100) | YES  |     | NULL    |       |
+| aLocC     | varchar(100) | YES  |     | NULL    |       |
+| aTenureC  | year         | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+17 rows in set (0.00 sec)
+
+mysql> alter table alumni
+    -> add aPassword varchar(20) after aCpi;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table company
+    -> modify markcri float(5,2);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> create table student(
+    -> stRollno char(8) primary key,
+    -> stName varchar(50),
+    -> stWebmail varchar(100),
+    -> stPhone int(10),
+    -> stPassword varchar(20),
+    -> st10thPer float(5,2),
+    -> st12thPer float(5,2),
+    -> stcurrCpi float(5,2),
+    -> stAge int,
+    -> stSpec varchar(100),
+    -> stInterest varchar(100),
+    -> stBatch year,
+    -> stPlaced char(1),
+    -> stPack int);
+Query OK, 0 rows affected, 4 warnings (0.01 sec)
+
+mysql> desc table student;
++----+-------------+---------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table   | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+---------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | student | NULL       | ALL  | NULL          | NULL | NULL    | NULL |    1 |   100.00 | NULL  |
++----+-------------+---------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> desc student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| stRollno   | char(8)      | NO   | PRI | NULL    |       |
+| stName     | varchar(50)  | YES  |     | NULL    |       |
+| stWebmail  | varchar(100) | YES  |     | NULL    |       |
+| stPhone    | int          | YES  |     | NULL    |       |
+| stPassword | varchar(20)  | YES  |     | NULL    |       |
+| st10thPer  | float(5,2)   | YES  |     | NULL    |       |
+| st12thPer  | float(5,2)   | YES  |     | NULL    |       |
+| stcurrCpi  | float(5,2)   | YES  |     | NULL    |       |
+| stAge      | int          | YES  |     | NULL    |       |
+| stSpec     | varchar(100) | YES  |     | NULL    |       |
+| stInterest | varchar(100) | YES  |     | NULL    |       |
+| stBatch    | year         | YES  |     | NULL    |       |
+| stPlaced   | char(1)      | YES  |     | NULL    |       |
+| stPack     | int          | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> alter table alumni
+    -> add primary key(aRollno);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table company
+    -> modify comPhone char(10);
+Query OK, 1 row affected (0.07 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> alter table student
+    -> modify stPhone char(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table alumni
+    -> modify aPhone char(10);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table alumni
+    -> modify aTenureP int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table alumni
+    -> modify aTenureC int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table company
+    -> change markcri cpiCri float(5,2)
+    -> ;
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> alter table company
+    -> add 10thCri float(5, 2) after minQual;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> alter table company
+    -> add 12thCri float(5, 2) after 10thCri;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc company;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| comId       | char(6)      | NO   | PRI | NULL    |       |
+| comName     | varchar(50)  | YES  |     | NULL    |       |
+| comEmail    | varchar(100) | YES  |     | NULL    |       |
+| comPhone    | char(10)     | YES  |     | NULL    |       |
+| comPassword | varchar(20)  | YES  |     | NULL    |       |
+| reqCandi    | int          | YES  |     | NULL    |       |
+| minQual     | year         | YES  |     | NULL    |       |
+| 10thCri     | float(5,2)   | YES  |     | NULL    |       |
+| 12thCri     | float(5,2)   | YES  |     | NULL    |       |
+| cpiCri      | float(5,2)   | YES  |     | NULL    |       |
+| salpack     | int          | YES  |     | NULL    |       |
+| mode        | varchar(7)   | YES  |     | NULL    |       |
+| mode1       | varchar(9)   | YES  |     | NULL    |       |
+| yearrec     | year         | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+14 rows in set (0.03 sec)
+
+mysql> CREATE TABLE student_company AS
+    -> SELECT s.stRollno, s.stName, c.comId,c.comName FROM student s
+    -> INNER JOIN company c
+    -> ON s.stBatch = c.minQual
+    -> WHERE s.st10thPer  >= c.10thCri
+    -> AND s.st12thPer >= c.12thCri
+    -> AND s.stcurrCpi >= c.cpiCri
+    -> AND s.stPack < c.salpack;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from student_company;
++----------+-------------+--------+---------------+
+| stRollno | stName      | comId  | comName       |
++----------+-------------+--------+---------------+
+| 2101CS08 | Amisha Raje | com001 | Hello Nishita |
++----------+-------------+--------+---------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student_company
+    -> add apply char(1);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student_company
+    -> add selected char(1);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create table adminlogin(
+    -> adId int(5) primary key auto_increment,
+    -> adUsername varchar(100),
+    -> adPwd varchar(20));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc adminlogin;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| adId       | int          | NO   | PRI | NULL    | auto_increment |
+| adUsername | varchar(100) | YES  |     | NULL    |
+    |
+| adPwd      | varchar(20)  | YES  |     | NULL    |
+    |
++------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table tpologin(
+    -> tpo int(5) primary key auto_increment,
+    -> tpoUsername varchar(100),
+    -> tpoPwd varchar(20));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> insert into tpologin
+    -> values(NULL, 'TPO', 'tpo'),
+    -> (NULL, 'Kripa Shankar Singh', 'tpo'),
+    -> (NULL, 'Amit Kumar Singh', 'tpo');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc tpologin;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| tpo         | int          | NO   | PRI | NULL    | auto_increment |
+| tpoUsername | varchar(100) | YES  |     | NULL    |                |
+| tpoPwd      | varchar(20)  | YES  |     | NULL    |                |
++-------------+-------------
+
+mysql> create table applied(
+    -> stRollno varchar(8),
+    -> comId varchar(6),
+    -> status varchar(20) default 'under process');
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> alter table company
+    -> modify mode varchar(10);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student
+    -> add stTranscript varchar(150) after stcurrCpi;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table alumni
+    -> add aBatch year after aPassword;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create table contactTable(
+    -> fullname varchar(50),
+    -> email varchar(100),
+    -> message varchar(350),
+    -> subject varchar(100));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc contactTable;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| fullname | varchar(50)  | YES  |     | NULL    |       |
+| email    | varchar(100) | YES  |     | NULL    |       |
+| message  | varchar(350) | YES  |     | NULL    |       |
+| subject  | varchar(100) | YES  |     | NULL    |       |  +----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table stqueries(
+    -> qid int(11) primary key,
+    -> stRollno varchar(8),
+    -> stName varchar(100),
+    -> stWebmail varchar(50),
+    -> stquery varchar(5000),
+    -> qstatus varchar(20));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
