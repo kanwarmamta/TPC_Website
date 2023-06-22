@@ -1,2 +1,2 @@
 # DBMSProject
-## training and placement cell dummy website
+## A website to provide a realistic experience of the Training and Placement Cell website of an institute. 
